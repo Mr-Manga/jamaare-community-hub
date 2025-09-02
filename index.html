@@ -1,205 +1,47 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jama'are Community Hub</title>
-  https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
   <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #eaf2f8;
-      margin: 0;
-      padding: 0;
+    .spinner {
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #3498db;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      animation: spin 1s linear infinite;
+      display: none;
+      margin-left: 8px;
     }
-    header {
-      background-color: #1abc9c;
-      color: white;
-      padding: 30px 20px;
-      text-align: center;
-    }
-    nav {
-      background text-decoration: none;
-      font-weight: bold;
-      font-size: 16px;
-    }
-    .lang-switch {
-      text-align: right;
-      padding: 10px 20px;
-    }
-    .lang-switch button {
-      margin-left: 10px;
-      padding: 5px 10px;
-      font-weight: bold;
-      cursor: pointer;
-      background-color: #1abc9c;
-      color: white;
-      border: none;
-      border-radius: 5px;
-    }
-    .section {
-      padding: 20px;
-    }
-    h2 {
-      color: #2c3e50;
-    }
-    .card {
-      background-color: white;
-      padding: 15px;
-      margin-bottom: 15px;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-    img.section-img {
-      width: 100%;
-      border-radius: 8px;
-      margin-bottom: 20px;
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
   </style>
-  <script>
-    function switchLanguage(lang) {
-      const english = document.querySelectorAll('.lang-en');
-      const hausa = document.querySelectorAll('.lang-ha');
-      english.forEach(el => el.style.display = lang === 'en' ? 'block' : 'none');
-      hausa.forEach(el => el.style.display = lang === 'ha' ? 'block' : 'none');
-    }
-  </script>
 </head>
-<body>
-  <header>
-    <h1 class="lang-en">Jama'are Community Hub</h1>
-    <h1 class="lang-ha" style="display:none;">Cibiyar Al'umma ta Jama'are</h1>
-    <p class="lang-en">Connecting our people to services like NEPA, hospitals, and schools.</p>
-    <p class="lang-ha" style="display:none;">Haɗa jama'a da ayyuka kamar NEPA, asibitoci, da makarantu.</p>
-  </header>
+<body class="bg-gradient-to-r from-blue-100 via-white to-green-100 text-gray-800">
 
-  <div class="lang-switch">
-    <button onclick="switchLanguage('en')">English</button>
-    <button onclick="switchLanguage('ha')">Hausa</button>
-  </div>
-
-  <nav>
-    #hospitals<i class="fas fa-hospital"></i> Hospitals</a>
-    #schools<i class="fas fa-school"></i> Schools</a>
-    #nepa<i class="fas fa-bolt"></i> NEPA</a>
+  <!-- Navbar -->
+  <nav class="bg-green-600 text-white p-4 flex justify-between items-center">
+    <h1 class="text-xl font-bold">Jama'are Community Hub</h1>
+    <button id="langToggle" class="bg-white text-green-600 px-3 py-1 rounded">Hausa</button>
   </nav>
 
-  <div class="section" id="hospitals">
-    <h2 class="lang-en"><i class="fas fa-hospital"></i> Hospitals in Jama'are</h2>
-    <h2 class="lang-ha" style="display:none;"><i class="fas fa-hospital"></i> Asibitoci a Jama'are</h2>
-    https://images.unsplash.com/photo-1588776814546-ec7e1f1c1b1b
+  <!-- Hero -->
+  <header class="text-center py-10 bg-gradient-to-r from-green-500 to-blue-500 text-white">
+    <h2 class="text-3xl font-bold mb-2" data-en="Welcome to Jama'are Hub" data-ha="Barka da zuwa Cibiyar Jama'are">Welcome to Jama'are Hub</h2>
+    <p class="text-lg" data-en="Your source for community info" data-ha="Mahadin bayanai na al'umma">Your source for community info</p>
+  </header>
 
-    <div class="card lang-en">
-      <strong>General Hospital Jama'are</strong><br />
-      Location: Jama'are Town<br />
-      Services: Emergency, Maternity, Outpatient<br />
-      Contact: 0803 123 4567
-    </div>
-    <div class="card lang-ha" style="display:none;">
-      <strong>Babban Asibitin Jama'are</strong><br />
-      Wuri: Garin Jama'are<br />
-      Ayyuka: Gaggawa, Haihuwa, Ziyarar Mara Lafiya<br />
-      Lamba: 0803 123 4567
-    </div>
-
-    <div class="card lang-en">
-      <strong>Primary Health Centre Galdimari</strong><br />
-      Location: Galdimari Ward<br />
-      Services: Immunization, Antenatal<br />
-      Contact: 0806 987 6543
-    </div>
-    <div class="card lang-ha" style="display:none;">
-      <strong>Cibiyar Lafiya ta Galdimari</strong><br />
-      Wuri: Unguwar Galdimari<br />
-      Ayyuka: Rigakafi, Haihuwa<br />
-      Lamba: 0806 987 6543
-    </div>
-
-    <div class="card lang-en">
-      <strong>Nasarawa Primary Health Care</strong><br />
-      Location: Zubuki, Nasarawa Jama'are<br />
-      Contact: 08166354746
-    </div>
-    <div class="card lang-ha" style="display:none;">
-      <strong>Asibitin Lafiya na Nasarawa</strong><br />
-      Wuri: Zubuki, Nasarawa Jama'are<br />
-      Lamba: 08166354746
-    </div>
-
-    <div class="card lang-en">
-      <strong>Sha Katafi Primary Health Care</strong><br />
-      Location: Kofar Gabas, Jama'are<br />
-      Contact: 070345678210
-    </div>
-    <div class="card lang-ha" style="display:none;">
-      <strong>Asibitin Sha Katafi</strong><br />
-      Wuri: Kofar Gabas, Jama'are<br />
-      Lamba: 070345678210
-    </div>
-  </div>
-
-  <div class="section" id="schools">
-    <h2 class="lang-en"><i class="fas fa-school"></i> Schools in Jama'are</h2>
-    <h2 class="lang-ha" style="display:none;"><i class="fas fa-school"></i> Makarantu a Jama'are</h2>
-    https://images.unsplash.com/photo-1571260899304-425eee4c7efc
-
-    <div class="card lang-en">
-      <strong>Government Day Secondary School</strong><br />
-      Location: Jama'are Central<br />
-      Type: Public Secondary School<br />
-      Contact: 0701 234 5678
-    </div>
-    <div class="card lang-ha" style="display:none;">
-      <strong>Makarantar Sakandare ta Rana</strong><br />
-      Wuri: Jama'are Central<br />
-      Nau'i: Makarantar Gwamnati<br />
-      Lamba: 0701 234 5678
-    </div>
-
-    <!-- Add other schools here with Hausa translations -->
-  </div>
-
-  <div class="section" id="nepa">
-    <h2 class="lang-en"><i class="fas fa-bolt"></i> NEPA (Electricity Services)</h2>
-    <h2 class="lang-ha" style="display:none;"><i class="fas fa-bolt"></i> NEPA (Ayyukan Lantarki)</h2>
-    https://images.unsplash.com/photo-1581091870622-1e7e8f9f2c7b
-
-    <div class="card lang-en">
-      <strong>How to Pay Bills:</strong><br />
-      Visit the nearest NEPA office or use mobile banking apps that support NEPA payments.
-    </div>
-    <div class="card lang-ha" style="display:none;">
-      <strong>Yadda ake Biyan Kudin Wuta:</strong><br />
-      Je zuwa ofishin NEPA mafi kusa ko amfani da manhajojin banki na waya.
-    </div>
-
-    <div class="card lang-en">
-      <strong>Report Faults:</strong><br />
-      Call the local NEPA fault line or visit the office in Jama’are to report outages or issues.
-    </div>
-    <div class="card lang-ha" style="display:none;">
-      <strong>Bayar da Rahoton Matsala:</strong><br />
-      Kira layin NEPA ko je ofishin NEPA a Jama'are.
-    </div>
-
-    <div class="card lang-en">
-      <strong>Consumer Rights:</strong><br />
-      You have the right to fair billing, timely repairs, and safe electricity supply.
-    </div>
-    <div class="card lang-ha" style="display:none;">
-      <strong>Hakkin Mai Amfani:</strong><br />
-      Kana da hakkin samun adalci wajen biyan kudin wuta da gyara cikin lokaci.
-    </div>
-
-    <div class="card lang-en">
-      <strong>Emergency Contact:</strong><br />
-      NEPA Jama’are Office: 0802 345 6789
-    </div>
-    <div class="card lang-ha" style="display:none;">
-      <strong>Lambar Gaggawa:</strong><br />
-      Ofishin NEPA Jama'are: 0802 345 6789
-    </div>
-  </div>
-</body>
-</html>
+  <!-- Hospitals -->
+  <section class="p-6">
+    <h3 class="text-2xl font-bold mb-4 flex items-center gap-2">
+      <i class="fa-solid fa-hospital"></i>
+      <span data-en="Hospita
