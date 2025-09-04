@@ -44,4 +44,59 @@
   <section class="p-6">
     <h3 class="text-2xl font-bold mb-4 flex items-center gap-2">
       <i class="fa-solid fa-hospital"></i>
-      <span data-en="Hospita
+      <span data-en="Hospitals" data-ha="Asibitoci">Hospitals</span>
+    </h3>
+    <div class="grid md:grid-cols-2 gap-4">
+      <div class="bg-white p-4 rounded shadow">
+        <img src="https://via.placeholder.com/400x200" class="rounded mb-2" alt="Hospital" />
+        <h4 class="font-bold">General Hospital Jama'are</h4>
+        <p>📍 Jama'are, Bauchi State</p>
+      </div>
+      <div class="bg-white p-4 rounded shadow">
+        <img src="https://via.placeholder.com/400x200" class="rounded mb-2" alt="Hospital" />
+        <h4 class="font-bold">Primary Health Care Center</h4>
+        <p>📍 Jama'are Town</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Schools -->
+  <section class="p-6 bg-blue-50">
+    <h3 class="text-2xl font-bold mb-4 flex items-center gap-2">
+      <i class="fa-solid fa-school"></i>
+      <span data-en="Schools" data-ha="Makarantu">Schools</span>
+    </h3>
+    <ul class="list-disc pl-6">
+      <li>Government Secondary School Jama'are</li>
+      <li>Jama'are Model Primary School</li>
+      <li>Community Science Secondary School</li>
+    </ul>
+  </section>
+
+  <!-- NEPA -->
+  <section class="p-6">
+    <h3 class="text-2xl font-bold mb-4 flex items-center gap-2">
+      <i class="fa-solid fa-bolt"></i>
+      <span data-en="NEPA Office" data-ha="Ofishin NEPA">NEPA Office</span>
+    </h3>
+    <div class="space-y-3">
+      <p><i class="fa-solid fa-location-dot text-red-500"></i> Jama'are NEPA Office – 
+        <a href="https://goo.gl/maps/mfLhPqVh7sR2" target="_blank" class="text-blue-600 underline">View on Map</a>
+      </p>
+      <p><i class="fa-solid fa-location-dot text-red-500"></i> Azare NEPA Office – 
+        <a href="https://goo.gl/maps/6vKbjhR3z3q" target="_blank" class="text-blue-600 underline">View on Map</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- Feedback Form -->
+  <section class="p-6 bg-green-50">
+    <h3 class="text-2xl font-bold mb-4 flex items-center gap-2">
+      <i class="fa-solid fa-comment-dots"></i>
+      <span data-en="Feedback" data-ha="Ra'ayi">Feedback</span>
+    </h3>
+    <!-- Replace 'yourformid' with your real Formspree ID -->
+    <form id="feedbackForm" action="https://formspree.io/f/yourformid" method="POST" class="space-y-4 max-w-md">
+      <input type="text" name="name" placeholder="Your Name" required class="w-full p-2 border rounded" />
+      <input type="email" name="email" placeholder="Your Email" required class="w-full p-2 border rounded" />
+      <textarea n
