@@ -47,15 +47,33 @@
       <span data-en="Hospitals" data-ha="Asibitoci">Hospitals</span>
     </h3>
     <div class="grid md:grid-cols-2 gap-4">
+
+      <!-- Hospital 1 -->
       <div class="bg-white p-4 rounded shadow">
         <img src="https://via.placeholder.com/400x200" class="rounded mb-2" alt="Hospital" />
         <h4 class="font-bold">General Hospital Jama'are</h4>
         <p>📍 Jama'are, Bauchi State</p>
       </div>
+
+      <!-- Hospital 2 -->
       <div class="bg-white p-4 rounded shadow">
         <img src="https://via.placeholder.com/400x200" class="rounded mb-2" alt="Hospital" />
-        <h4 class="font-bold">Primary Health Care Center</h4>
+        <h4 class="font-bold">Primary Health Care Center Jama'are</h4>
         <p>📍 Jama'are Town</p>
+      </div>
+
+      <!-- Hospital 3 -->
+      <div class="bg-white p-4 rounded shadow">
+        <img src="https://via.placeholder.com/400x200" class="rounded mb-2" alt="Hospital" />
+        <h4 class="font-bold">Federal Medical Centre (Nearby Azare)</h4>
+        <p>📍 Azare, Bauchi State</p>
+      </div>
+
+      <!-- Hospital 4 -->
+      <div class="bg-white p-4 rounded shadow">
+        <img src="https://via.placeholder.com/400x200" class="rounded mb-2" alt="Hospital" />
+        <h4 class="font-bold">Maternal & Child Clinic Jama'are</h4>
+        <p>📍 Jama'are LGA</p>
       </div>
     </div>
   </section>
@@ -66,10 +84,12 @@
       <i class="fa-solid fa-school"></i>
       <span data-en="Schools" data-ha="Makarantu">Schools</span>
     </h3>
-    <ul class="list-disc pl-6">
+    <ul class="list-disc pl-6 space-y-2">
       <li>Government Secondary School Jama'are</li>
       <li>Jama'are Model Primary School</li>
-      <li>Community Science Secondary School</li>
+      <li>Community Science Secondary School Jama'are</li>
+      <li>Islamiyya Schools (Various Locations)</li>
+      <li>Federal Government College Jama'are (Nearby)</li>
     </ul>
   </section>
 
@@ -99,4 +119,62 @@
     <form id="feedbackForm" action="https://formspree.io/f/yourformid" method="POST" class="space-y-4 max-w-md">
       <input type="text" name="name" placeholder="Your Name" required class="w-full p-2 border rounded" />
       <input type="email" name="email" placeholder="Your Email" required class="w-full p-2 border rounded" />
-      <textarea n
+      <textarea name="message" placeholder="Your Message" required class="w-full p-2 border rounded"></textarea>
+      <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded flex items-center">
+        Submit
+        <div id="spinner" class="spinner"></div>
+      </button>
+      <p id="successMsg" class="hidden text-green-600 font-bold mt-2">✅ Thank you! Your feedback has been sent.</p>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-green-600 text-white text-center p-4 mt-6">
+    <p data-en="© 2025 Jama'are Community Hub. All rights reserved." data-ha="© 2025 Cibiyar Jama'are. Duk hakkoki na musamman.">
+      © 2025 Jama'are Community Hub. All rights reserved.
+    </p>
+  </footer>
+
+  <script>
+    // Language toggle
+    const toggleBtn = document.getElementById("langToggle");
+    const elements = document.querySelectorAll("[data-en]");
+    let isHausa = false;
+    toggleBtn.addEventListener("click", () => {
+      isHausa = !isHausa;
+      elements.forEach(el => {
+        el.textContent = isHausa ? el.getAttribute("data-ha") : el.getAttribute("data-en");
+      });
+      toggleBtn.textContent = isHausa ? "English" : "Hausa";
+    });
+
+    // Form submission with spinner
+    const form = document.getElementById("feedbackForm");
+    const spinner = document.getElementById("spinner");
+    const successMsg = document.getElementById("successMsg");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      spinner.style.display = "inline-block";
+      const data = new FormData(form);
+      try {
+        const res = await fetch(form.action, { 
+          method: "POST", 
+          body: data, 
+          headers: { 'Accept': 'application/json' } 
+        });
+        if (res.ok) {
+          successMsg.classList.remove("hidden");
+          form.reset();
+        } else {
+          alert("Something went wrong. Try again!");
+        }
+      } catch {
+        alert("Error sending message.");
+      } finally {
+        spinner.style.display = "none";
+      }
+    });
+  </script>
+</body>
+</html>
