@@ -1,30 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jama'are Community Hub</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
   <!-- PWA manifest -->
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#1e3a8a"/>
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#1e3a8a" />
 </head>
 <body class="bg-gray-100 text-gray-900 font-sans">
 
   <!-- Navbar -->
   <nav class="bg-blue-800 text-white shadow-md sticky top-0 z-50">
     <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-      <h1 class="text-2xl font-bold">🌍 Jama'are Hub</h1>
+      <!-- Logo -->
+      <div class="flex items-center">
+        <img src="image/logo.png" alt="Jama'are Hub Logo" class="h-10 w-auto mr-2" />
+        <span class="text-2xl font-bold">Jama'are Hub</span>
+      </div>
       
       <!-- Search Bar -->
       <div class="hidden md:flex items-center space-x-2">
-        <input type="text" id="searchBar" placeholder="Search resources..." 
-          class="px-3 py-1 rounded text-black w-60">
-        <button onclick="searchResources()" class="bg-yellow-400 px-3 py-1 rounded text-black font-semibold">
-          Search
-        </button>
+        <input type="text" id="searchBar" placeholder="Search resources..." class="px-3 py-1 rounded text-black w-60" />
+        <button onclick="searchResources()" class="bg-yellow-400 px-3 py-1 rounded text-black font-semibold">Search</button>
       </div>
 
       <!-- Menu -->
@@ -37,7 +38,7 @@
     </div>
   </nav>
 
-  <!-- Hero -->
+  <!-- Hero Section -->
   <section class="bg-gradient-to-r from-blue-700 to-purple-700 text-white py-16">
     <div class="container mx-auto text-center px-4">
       <h2 class="text-4xl md:text-5xl font-bold mb-4">Welcome to Jama'are Community Hub</h2>
@@ -91,19 +92,19 @@
     </div>
   </section>
 
-  <!-- Schools -->
+  <!-- Schools Section -->
   <section id="schools" class="container mx-auto px-6 py-12">
     <h3 class="text-3xl font-bold mb-6 text-center">🏫 Schools in Jama'are</h3>
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
       <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1588075592446-2490a4b9b7b5?w=600" class="w-full h-40 object-cover">
+        <img src="https://images.unsplash.com/photo-1588075592446-2490a4b9b7b5?w=600" class="w-full h-40 object-cover" />
         <div class="p-4">
           <h4 class="font-bold">Government Day Secondary School Jama'are</h4>
           <p class="text-sm">One of the largest secondary schools in Jama’are.</p>
         </div>
       </div>
       <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1600326146109-44a6e9c82c7b?w=600" class="w-full h-40 object-cover">
+        <img src="https://images.unsplash.com/photo-1600326146109-44a6e9c82c7b?w=600" class="w-full h-40 object-cover" />
         <div class="p-4">
           <h4 class="font-bold">Federal Government College Jama'are</h4>
           <p class="text-sm">Top federal unity school in the area.</p>
@@ -112,20 +113,20 @@
     </div>
   </section>
 
-  <!-- Hospitals -->
+  <!-- Hospitals Section -->
   <section id="hospitals" class="bg-gray-50 py-12">
     <div class="container mx-auto px-6">
       <h3 class="text-3xl font-bold mb-6 text-center">🏥 Hospitals in Jama'are</h3>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1584438784894-089d6a62b8d6?w=600" class="w-full h-40 object-cover">
+          <img src="https://images.unsplash.com/photo-1584438784894-089d6a62b8d6?w=600" class="w-full h-40 object-cover" />
           <div class="p-4">
             <h4 class="font-bold">General Hospital Jama'are</h4>
             <a href="https://maps.google.com?q=General+Hospital+Jama'are" target="_blank" class="text-blue-600 underline">📍 View on Google Maps</a>
           </div>
         </div>
         <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1576765608535-5ef9c2c9aa78?w=600" class="w-full h-40 object-cover">
+          <img src="https://images.unsplash.com/photo-1576765608535-5ef9c2c9aa78?w=600" class="w-full h-40 object-cover" />
           <div class="p-4">
             <h4 class="font-bold">Primary Health Care Centre Jama'are</h4>
             <a href="https://maps.google.com?q=PHC+Jama'are" target="_blank" class="text-blue-600 underline">📍 View on Google Maps</a>
@@ -171,14 +172,18 @@
       const input = document.getElementById("searchBar").value.toLowerCase();
       const resources = document.querySelectorAll("#resourcesList div");
       resources.forEach(resource => {
-        if (resource.innerText.toLowerCase().includes(input)) {
-          resource.style.display = "block";
-        } else {
-          resource.style.display = "none";
-        }
+        resource.style.display = resource.innerText.toLowerCase().includes(input) ? "block" : "none";
+      });
+    }
+
+    // Register Service Worker for PWA
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js')
+          .then(reg => console.log('Service Worker Registered', reg))
+          .catch(err => console.log('Service Worker Failed', err));
       });
     }
   </script>
-
 </body>
 </html>
