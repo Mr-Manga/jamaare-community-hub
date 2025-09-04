@@ -5,181 +5,115 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jama'are Community Hub</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-  <style>
-    .spinner {
-      border: 4px solid #f3f3f3;
-      border-top: 4px solid #3498db;
-      border-radius: 50%;
-      width: 24px;
-      height: 24px;
-      animation: spin 1s linear infinite;
-      display: none;
-      margin-left: 8px;
-    }
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="bg-gradient-to-r from-blue-100 via-white to-green-100 text-gray-800">
+<body class="bg-gray-100 text-gray-800">
 
   <!-- Navbar -->
-  <nav class="bg-green-600 text-white p-4 flex justify-between items-center">
+  <nav class="bg-blue-600 text-white p-4 shadow-lg flex justify-between items-center">
     <h1 class="text-xl font-bold">Jama'are Community Hub</h1>
-    <button id="langToggle" class="bg-white text-green-600 px-3 py-1 rounded">Hausa</button>
+    <div>
+      <button onclick="toggleHausa()" class="bg-white text-blue-600 px-3 py-1 rounded">Hausa/English</button>
+    </div>
   </nav>
 
   <!-- Hero -->
-  <header class="text-center py-10 bg-gradient-to-r from-green-500 to-blue-500 text-white">
-    <h2 class="text-3xl font-bold mb-2" data-en="Welcome to Jama'are Hub" data-ha="Barka da zuwa Cibiyar Jama'are">Welcome to Jama'are Hub</h2>
-    <p class="text-lg" data-en="Your source for community info" data-ha="Mahadin bayanai na al'umma">Your source for community info</p>
+  <header class="bg-gradient-to-r from-blue-500 to-green-500 text-white text-center p-12">
+    <h2 class="text-3xl font-bold">Welcome to Jama'are Community Hub</h2>
+    <p class="mt-2">Your one-stop access to schools, hospitals, electricity info & study materials.</p>
   </header>
 
-  <!-- Hospitals -->
-  <section class="p-6">
-    <h3 class="text-2xl font-bold mb-4 flex items-center gap-2">
-      <i class="fa-solid fa-hospital"></i>
-      <span data-en="Hospitals in Jama'are" data-ha="Asibitocin Jama'are">Hospitals in Jama'are</span>
-    </h3>
+  <!-- Schools -->
+  <section id="schools" class="p-6">
+    <h3 class="text-2xl font-bold mb-4"><i class="fa-solid fa-school"></i> Schools in Jama'are</h3>
     <div class="grid md:grid-cols-2 gap-6">
-
       <div class="bg-white p-4 rounded shadow">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/65/Hospital_Building.jpg" 
-             class="rounded mb-3 w-full object-cover" alt="General Hospital Jama'are" />
-        <h4 class="font-bold">General Hospital Jama'are</h4>
-        <p>📍 Jama'are, Bauchi State</p>
-      </div>
-
-      <div class="bg-white p-4 rounded shadow">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/4/40/Clinic_building.jpg" 
-             class="rounded mb-3 w-full object-cover" alt="PHC Jama'are" />
-        <h4 class="font-bold">Primary Health Care Center Jama'are</h4>
+        <img src="https://images.unsplash.com/photo-1604881980689-7249a23f35f2" alt="Secondary School" class="rounded mb-3 w-full h-48 object-cover">
+        <h4 class="font-bold">Government Secondary School Jama'are</h4>
         <p>📍 Jama'are Town</p>
       </div>
-
       <div class="bg-white p-4 rounded shadow">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/f/f0/Maternity_Ward.jpg" 
-             class="rounded mb-3 w-full object-cover" alt="Maternal Clinic" />
-        <h4 class="font-bold">Maternal & Child Clinic Jama'are</h4>
-        <p>📍 Jama'are LGA</p>
+        <img src="https://images.unsplash.com/photo-1596495577886-d920f1fb7238" alt="Primary School" class="rounded mb-3 w-full h-48 object-cover">
+        <h4 class="font-bold">Primary School Jama'are</h4>
+        <p>📍 Jama'are Town</p>
       </div>
-
     </div>
   </section>
 
-  <!-- Schools -->
-  <section class="p-6 bg-blue-50">
-    <h3 class="text-2xl font-bold mb-4 flex items-center gap-2">
-      <i class="fa-solid fa-school"></i>
-      <span data-en="Schools in Jama'are" data-ha="Makarantun Jama'are">Schools in Jama'are</span>
-    </h3>
+  <!-- Hospitals -->
+  <section id="hospitals" class="p-6 bg-gray-50">
+    <h3 class="text-2xl font-bold mb-4"><i class="fa-solid fa-hospital"></i> Hospitals in Jama'are</h3>
     <div class="grid md:grid-cols-2 gap-6">
-
       <div class="bg-white p-4 rounded shadow">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/2/28/School_building.jpg" 
-             class="rounded mb-3 w-full object-cover" alt="GSS Jama'are"/>
-        <h4 class="font-bold">Government Secondary School Jama'are</h4>
+        <img src="https://images.unsplash.com/photo-1584438784894-089d6a62b8d6" alt="General Hospital" class="rounded mb-3 w-full h-48 object-cover">
+        <h4 class="font-bold">General Hospital Jama'are</h4>
+        <p>📍 Jama'are, Bauchi State</p>
       </div>
-
       <div class="bg-white p-4 rounded shadow">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Primary_School.jpg" 
-             class="rounded mb-3 w-full object-cover" alt="Model Primary"/>
-        <h4 class="font-bold">Jama'are Model Primary School</h4>
+        <img src="https://images.unsplash.com/photo-1580281657521-6a0b2d6d3c58" alt="Primary Health Center" class="rounded mb-3 w-full h-48 object-cover">
+        <h4 class="font-bold">Primary Health Center Jama'are</h4>
+        <p>📍 Jama'are Town</p>
       </div>
-
-      <div class="bg-white p-4 rounded shadow">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Science_school.jpg" 
-             class="rounded mb-3 w-full object-cover" alt="Community Science School"/>
-        <h4 class="font-bold">Community Science Secondary School Jama'are</h4>
-      </div>
-
-      <div class="bg-white p-4 rounded shadow">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/9/9d/Islamic_School.jpg" 
-             class="rounded mb-3 w-full object-cover" alt="Islamiyya"/>
-        <h4 class="font-bold">Islamiyya Schools (Various in Jama'are)</h4>
-      </div>
-
     </div>
   </section>
 
   <!-- NEPA -->
-  <section class="p-6">
-    <h3 class="text-2xl font-bold mb-4 flex items-center gap-2">
-      <i class="fa-solid fa-bolt"></i>
-      <span data-en="NEPA Office" data-ha="Ofishin NEPA">NEPA Office</span>
-    </h3>
-    <div class="space-y-3">
-      <p><i class="fa-solid fa-location-dot text-red-500"></i> Jama'are NEPA Office – 
-        <a href="https://goo.gl/maps/mfLhPqVh7sR2" target="_blank" class="text-blue-600 underline">View on Map</a>
-      </p>
+  <section id="nepa" class="p-6">
+    <h3 class="text-2xl font-bold mb-4"><i class="fa-solid fa-bolt"></i> NEPA Office in Jama'are</h3>
+    <div class="bg-white p-4 rounded shadow">
+      <img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231" alt="Electricity Office" class="rounded mb-3 w-full h-48 object-cover">
+      <h4 class="font-bold">NEPA Office Jama'are</h4>
+      <p>📍 Near Emir's Palace, Jama'are</p>
+      <a href="https://maps.google.com?q=NEPA+Office+Jamaare" target="_blank" class="text-blue-600 underline">📍 View on Google Maps</a>
     </div>
   </section>
 
   <!-- Feedback Form -->
-  <section class="p-6 bg-green-50">
-    <h3 class="text-2xl font-bold mb-4 flex items-center gap-2">
-      <i class="fa-solid fa-comment-dots"></i>
-      <span data-en="Feedback" data-ha="Ra'ayi">Feedback</span>
-    </h3>
-    <form id="feedbackForm" action="https://formspree.io/f/mrbakllz" method="POST" class="space-y-4 max-w-md">
-      <input type="text" name="name" placeholder="Your Name" required class="w-full p-2 border rounded" />
-      <input type="email" name="email" placeholder="Your Email" required class="w-full p-2 border rounded" />
-      <textarea name="message" placeholder="Your Message" required class="w-full p-2 border rounded"></textarea>
-      <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded flex items-center">
-        Submit
-        <div id="spinner" class="spinner"></div>
-      </button>
-      <p id="successMsg" class="hidden text-green-600 font-bold mt-2">✅ Thank you! Your feedback has been sent.</p>
+  <section id="feedback" class="p-6 bg-gray-50">
+    <h3 class="text-2xl font-bold mb-4"><i class="fa-solid fa-comment-dots"></i> Feedback</h3>
+    <form id="feedbackForm" action="https://formspree.io/f/mrbakllz" method="POST" class="bg-white p-4 rounded shadow max-w-lg">
+      <input type="text" name="name" placeholder="Your Name" required class="w-full border p-2 mb-3 rounded">
+      <input type="email" name="email" placeholder="Your Email" required class="w-full border p-2 mb-3 rounded">
+      <textarea name="message" placeholder="Your Message" required class="w-full border p-2 mb-3 rounded"></textarea>
+      <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">Submit</button>
+      <div id="spinner" class="hidden mt-2">⏳ Sending...</div>
+      <div id="successMessage" class="hidden mt-2 text-green-600">✅ Thank you! Your message was sent.</div>
     </form>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-green-600 text-white text-center p-4 mt-6">
-    <p data-en="© 2025 Jama'are Community Hub. All rights reserved." data-ha="© 2025 Cibiyar Jama'are. Duk hakkoki na musamman.">
-      © 2025 Jama'are Community Hub. All rights reserved.
-    </p>
+  <footer class="bg-blue-600 text-white text-center p-4 mt-6">
+    <p>&copy; 2025 Jama'are Community Hub. All rights reserved.</p>
   </footer>
 
+  <!-- Hausa Toggle Script -->
   <script>
-    // Language toggle
-    const toggleBtn = document.getElementById("langToggle");
-    const elements = document.querySelectorAll("[data-en]");
-    let isHausa = false;
-    toggleBtn.addEventListener("click", () => {
-      isHausa = !isHausa;
-      elements.forEach(el => {
-        el.textContent = isHausa ? el.getAttribute("data-ha") : el.getAttribute("data-en");
-      });
-      toggleBtn.textContent = isHausa ? "English" : "Hausa";
-    });
+    function toggleHausa() {
+      alert("Hausa translation coming soon!"); 
+    }
 
-    // Form submission with spinner
+    // Feedback form
     const form = document.getElementById("feedbackForm");
     const spinner = document.getElementById("spinner");
-    const successMsg = document.getElementById("successMsg");
+    const successMessage = document.getElementById("successMessage");
 
-    form.addEventListener("submit", async (e) => {
+    form.addEventListener("submit", async function(e) {
       e.preventDefault();
-      spinner.style.display = "inline-block";
+      spinner.classList.remove("hidden");
+
       const data = new FormData(form);
-      try {
-        const res = await fetch(form.action, { 
-          method: "POST", 
-          body: data, 
-          headers: { 'Accept': 'application/json' } 
-        });
-        if (res.ok) {
-          successMsg.classList.remove("hidden");
-          form.reset();
-        } else {
-          alert("Something went wrong. Try again!");
-        }
-      } catch {
-        alert("Error sending message.");
-      } finally {
-        spinner.style.display = "none";
+      const response = await fetch(form.action, {
+        method: form.method,
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      spinner.classList.add("hidden");
+      if (response.ok) {
+        successMessage.classList.remove("hidden");
+        form.reset();
+      } else {
+        alert("Oops! Something went wrong.");
       }
     });
   </script>
