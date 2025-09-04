@@ -1,42 +1,125 @@
-<!-- Hospitals -->
-<section class="p-6">
-  <h3 class="text-2xl font-bold mb-4 flex items-center gap-2">
-    <i class="fa-solid fa-hospital"></i>
-    <span data-en="Hospitals" data-ha="Asibitoci">Hospitals</span>
-  </h3>
-  <div class="grid md:grid-cols-2 gap-4">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jama'are Community Hub</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    .spinner {
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #3498db;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      animation: spin 1s linear infinite;
+      display: none;
+      margin-left: 8px;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-r from-blue-100 via-white to-green-100 text-gray-800">
 
-    <!-- Hospital 1 -->
-    <div class="bg-white p-4 rounded shadow">
-      <img src="https://images.unsplash.com/photo-1586773860416-2f5f47b1f2db?auto=format&fit=crop&w=800&q=80" 
-           class="rounded mb-2 w-full h-48 object-cover" alt="General Hospital Jama'are" />
-      <h4 class="font-bold">General Hospital Jama'are</h4>
-      <p>📍 Jama'are, Bauchi State</p>
+  <!-- Navbar -->
+  <nav class="bg-green-600 text-white p-4 flex justify-between items-center">
+    <h1 class="text-xl font-bold">Jama'are Community Hub</h1>
+    <button id="langToggle" class="bg-white text-green-600 px-3 py-1 rounded">Hausa</button>
+  </nav>
+
+  <!-- Hero -->
+  <header class="text-center py-10 bg-gradient-to-r from-green-500 to-blue-500 text-white">
+    <h2 class="text-3xl font-bold mb-2" data-en="Welcome to Jama'are Hub" data-ha="Barka da zuwa Cibiyar Jama'are">Welcome to Jama'are Hub</h2>
+    <p class="text-lg" data-en="Your source for community info" data-ha="Mahadin bayanai na al'umma">Your source for community info</p>
+  </header>
+
+  <!-- Hospitals -->
+  <section class="p-6">
+    <h3 class="text-2xl font-bold mb-4 flex items-center gap-2">
+      <i class="fa-solid fa-hospital"></i>
+      <span data-en="Hospitals" data-ha="Asibitoci">Hospitals</span>
+    </h3>
+    <div class="grid md:grid-cols-2 gap-4">
+
+      <!-- Hospital 1 -->
+      <div class="bg-white p-4 rounded shadow">
+        <img src="https://images.unsplash.com/photo-1586773860416-2f5f47b1f2db?auto=format&fit=crop&w=800&q=80" 
+             class="rounded mb-2 w-full h-48 object-cover" alt="General Hospital Jama'are" />
+        <h4 class="font-bold">General Hospital Jama'are</h4>
+        <p>📍 Jama'are, Bauchi State</p>
+      </div>
+
+      <!-- Hospital 2 -->
+      <div class="bg-white p-4 rounded shadow">
+        <img src="https://images.unsplash.com/photo-1580281657525-3e7d63f85bb6?auto=format&fit=crop&w=800&q=80" 
+             class="rounded mb-2 w-full h-48 object-cover" alt="PHC Jama'are" />
+        <h4 class="font-bold">Primary Health Care Center Jama'are</h4>
+        <p>📍 Jama'are Town</p>
+      </div>
+
+      <!-- Hospital 3 -->
+      <div class="bg-white p-4 rounded shadow">
+        <img src="https://images.unsplash.com/photo-1576765608638-4dbdb1bfa7f6?auto=format&fit=crop&w=800&q=80" 
+             class="rounded mb-2 w-full h-48 object-cover" alt="FMC Azare" />
+        <h4 class="font-bold">Federal Medical Centre (Nearby Azare)</h4>
+        <p>📍 Azare, Bauchi State</p>
+      </div>
+
+      <!-- Hospital 4 -->
+      <div class="bg-white p-4 rounded shadow">
+        <img src="https://images.unsplash.com/photo-1615461066841-1dfba9bca7e8?auto=format&fit=crop&w=800&q=80" 
+             class="rounded mb-2 w-full h-48 object-cover" alt="Maternal Clinic" />
+        <h4 class="font-bold">Maternal & Child Clinic Jama'are</h4>
+        <p>📍 Jama'are LGA</p>
+      </div>
+
     </div>
+  </section>
 
-    <!-- Hospital 2 -->
-    <div class="bg-white p-4 rounded shadow">
-      <img src="https://images.unsplash.com/photo-1580281657525-3e7d63f85bb6?auto=format&fit=crop&w=800&q=80" 
-           class="rounded mb-2 w-full h-48 object-cover" alt="PHC Jama'are" />
-      <h4 class="font-bold">Primary Health Care Center Jama'are</h4>
-      <p>📍 Jama'are Town</p>
+  <!-- Schools -->
+  <section class="p-6 bg-blue-50">
+    <h3 class="text-2xl font-bold mb-4 flex items-center gap-2">
+      <i class="fa-solid fa-school"></i>
+      <span data-en="Schools" data-ha="Makarantu">Schools</span>
+    </h3>
+    <div class="grid md:grid-cols-2 gap-4">
+
+      <div class="bg-white p-4 rounded shadow">
+        <img src="https://images.unsplash.com/photo-1588075592446-25c54f37f1b9?auto=format&fit=crop&w=800&q=80" 
+             class="rounded mb-2 w-full h-48 object-cover" alt="GSS Jama'are"/>
+        <h4 class="font-bold">Government Secondary School Jama'are</h4>
+      </div>
+
+      <div class="bg-white p-4 rounded shadow">
+        <img src="https://images.unsplash.com/photo-1605773527852-3757a9f0b1b9?auto=format&fit=crop&w=800&q=80" 
+             class="rounded mb-2 w-full h-48 object-cover" alt="Model Primary"/>
+        <h4 class="font-bold">Jama'are Model Primary School</h4>
+      </div>
+
+      <div class="bg-white p-4 rounded shadow">
+        <img src="https://images.unsplash.com/photo-1622484218798-cb6320f9dfe8?auto=format&fit=crop&w=800&q=80" 
+             class="rounded mb-2 w-full h-48 object-cover" alt="Community Science School"/>
+        <h4 class="font-bold">Community Science Secondary School Jama'are</h4>
+      </div>
+
+      <div class="bg-white p-4 rounded shadow">
+        <img src="https://images.unsplash.com/photo-1631346371720-df33e1e3c2b5?auto=format&fit=crop&w=800&q=80" 
+             class="rounded mb-2 w-full h-48 object-cover" alt="Islamiyya"/>
+        <h4 class="font-bold">Islamiyya Schools (Various Locations)</h4>
+      </div>
+
     </div>
+  </section>
 
-    <!-- Hospital 3 -->
-    <div class="bg-white p-4 rounded shadow">
-      <img src="https://images.unsplash.com/photo-1576765608638-4dbdb1bfa7f6?auto=format&fit=crop&w=800&q=80" 
-           class="rounded mb-2 w-full h-48 object-cover" alt="FMC Azare" />
-      <h4 class="font-bold">Federal Medical Centre (Nearby Azare)</h4>
-      <p>📍 Azare, Bauchi State</p>
-    </div>
-
-    <!-- Hospital 4 -->
-    <div class="bg-white p-4 rounded shadow">
-      <img src="https://images.unsplash.com/photo-1615461066841-1dfba9bca7e8?auto=format&fit=crop&w=800&q=80" 
-           class="rounded mb-2 w-full h-48 object-cover" alt="Maternal Clinic" />
-      <h4 class="font-bold">Maternal & Child Clinic Jama'are</h4>
-      <p>📍 Jama'are LGA</p>
-    </div>
-
-  </div>
-</section>
+  <!-- NEPA -->
+  <section class="p-6">
+    <h3 class="text-2xl font-bold mb-4 flex items-center gap-2">
+      <i class="fa-solid fa-bolt"></i>
+      <span data-en="NEPA Office" data-ha="Ofishin NEPA">NEPA Office</span>
+    </h3>
+    <div class="space-y-3">
+      <p><i class="fa-solid fa-location-dot text-red-500"></i> Jama'a
