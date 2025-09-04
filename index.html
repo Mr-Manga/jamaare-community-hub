@@ -3,18 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jama'are Community Hub - Education</title>
+  <title>Jama'are Community Hub</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- PWA manifest -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#1e3a8a"/>
 </head>
-<body class="bg-gray-100 text-gray-900">
+<body class="bg-gray-100 text-gray-900 font-sans">
 
   <!-- Navbar -->
-  <nav class="bg-blue-700 text-white shadow-lg">
+  <nav class="bg-blue-800 text-white shadow-md sticky top-0 z-50">
     <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-      <h1 class="text-2xl font-bold">📚 Jama'are Education Hub</h1>
+      <h1 class="text-2xl font-bold">🌍 Jama'are Hub</h1>
       
-      <!-- Search -->
+      <!-- Search Bar -->
       <div class="hidden md:flex items-center space-x-2">
         <input type="text" id="searchBar" placeholder="Search resources..." 
           class="px-3 py-1 rounded text-black w-60">
@@ -25,76 +29,144 @@
 
       <!-- Menu -->
       <div class="space-x-6 hidden md:flex">
-        <div class="relative group">
-          <button class="hover:text-yellow-300">WAEC <i class="fa fa-caret-down"></i></button>
-          <div class="absolute hidden group-hover:block bg-white text-black mt-2 rounded shadow-md w-48">
-            <a href="resources/waec-timetable.pdf" target="_blank" class="block px-4 py-2 hover:bg-gray-100">📄 WAEC Timetable</a>
-            <a href="resources/waec-pastquestions.pdf" target="_blank" class="block px-4 py-2 hover:bg-gray-100">📘 WAEC Past Questions</a>
-          </div>
-        </div>
-
-        <div class="relative group">
-          <button class="hover:text-yellow-300">NECO <i class="fa fa-caret-down"></i></button>
-          <div class="absolute hidden group-hover:block bg-white text-black mt-2 rounded shadow-md w-48">
-            <a href="resources/neco-timetable.pdf" target="_blank" class="block px-4 py-2 hover:bg-gray-100">📄 NECO Timetable</a>
-            <a href="resources/neco-pastquestions.pdf" target="_blank" class="block px-4 py-2 hover:bg-gray-100">📘 NECO Past Questions</a>
-          </div>
-        </div>
-
-        <div class="relative group">
-          <button class="hover:text-yellow-300">JAMB <i class="fa fa-caret-down"></i></button>
-          <div class="absolute hidden group-hover:block bg-white text-black mt-2 rounded shadow-md w-48">
-            <a href="resources/jamb-syllabus.pdf" target="_blank" class="block px-4 py-2 hover:bg-gray-100">📄 JAMB Syllabus</a>
-            <a href="resources/jamb-pastquestions.pdf" target="_blank" class="block px-4 py-2 hover:bg-gray-100">📘 JAMB Past Questions</a>
-          </div>
-        </div>
+        <a href="#education" class="hover:text-yellow-300">Education</a>
+        <a href="#schools" class="hover:text-yellow-300">Schools</a>
+        <a href="#hospitals" class="hover:text-yellow-300">Hospitals</a>
+        <a href="#nepa" class="hover:text-yellow-300">NEPA</a>
       </div>
     </div>
   </nav>
 
-  <!-- Hero Section -->
-  <section class="bg-gradient-to-r from-blue-600 to-purple-700 text-white py-16">
-    <div class="container mx-auto text-center">
-      <h2 class="text-4xl font-bold mb-4">Welcome to Jama'are Education Hub</h2>
-      <p class="text-lg">Helping students prepare for WAEC, NECO & JAMB with resources, timetables, and past questions.</p>
+  <!-- Hero -->
+  <section class="bg-gradient-to-r from-blue-700 to-purple-700 text-white py-16">
+    <div class="container mx-auto text-center px-4">
+      <h2 class="text-4xl md:text-5xl font-bold mb-4">Welcome to Jama'are Community Hub</h2>
+      <p class="text-lg md:text-xl">Your one-stop place for Education, Health, Power, and Schools in Jama’are.</p>
     </div>
   </section>
 
-  <!-- Resources Section -->
-  <section class="container mx-auto px-6 py-12">
-    <h3 class="text-3xl font-bold mb-6 text-center">📘 Available Resources</h3>
+  <!-- Education Section -->
+  <section id="education" class="container mx-auto px-6 py-12">
+    <h3 class="text-3xl font-bold mb-6 text-center">📘 Education Resources</h3>
     <div id="resourcesList" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-      
-      <!-- WAEC -->
-      <div class="bg-white p-6 rounded-lg shadow-md">
-        <h4 class="text-xl font-semibold mb-3">WAEC Resources</h4>
-        <a href="resources/waec-timetable.pdf" target="_blank" class="text-blue-600 underline block">📄 Download WAEC Timetable</a>
-        <a href="resources/waec-pastquestions.pdf" target="_blank" class="text-blue-600 underline block mt-2">📘 WAEC Past Questions</a>
+      <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition">
+        <h4 class="text-xl font-semibold mb-3">WAEC</h4>
+        <a href="resources/waec-timetable.pdf" target="_blank" class="text-blue-600 underline block">📄 WAEC Timetable</a>
+        <a href="resources/waec-pastquestions.pdf" target="_blank" class="text-blue-600 underline block mt-2">📘 Past Questions</a>
       </div>
-
-      <!-- NECO -->
-      <div class="bg-white p-6 rounded-lg shadow-md">
-        <h4 class="text-xl font-semibold mb-3">NECO Resources</h4>
-        <a href="resources/neco-timetable.pdf" target="_blank" class="text-green-600 underline block">📄 Download NECO Timetable</a>
-        <a href="resources/neco-pastquestions.pdf" target="_blank" class="text-green-600 underline block mt-2">📘 NECO Past Questions</a>
+      <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition">
+        <h4 class="text-xl font-semibold mb-3">NECO</h4>
+        <a href="resources/neco-timetable.pdf" target="_blank" class="text-green-600 underline block">📄 NECO Timetable</a>
+        <a href="resources/neco-pastquestions.pdf" target="_blank" class="text-green-600 underline block mt-2">📘 Past Questions</a>
       </div>
+      <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition">
+        <h4 class="text-xl font-semibold mb-3">JAMB</h4>
+        <a href="resources/jamb-syllabus.pdf" target="_blank" class="text-red-600 underline block">📄 JAMB Syllabus</a>
+        <a href="resources/jamb-pastquestions.pdf" target="_blank" class="text-red-600 underline block mt-2">📘 Past Questions</a>
+      </div>
+    </div>
+  </section>
 
-      <!-- JAMB -->
-      <div class="bg-white p-6 rounded-lg shadow-md">
-        <h4 class="text-xl font-semibold mb-3">JAMB Resources</h4>
-        <a href="resources/jamb-syllabus.pdf" target="_blank" class="text-red-600 underline block">📄 Download JAMB Syllabus</a>
-        <a href="resources/jamb-pastquestions.pdf" target="_blank" class="text-red-600 underline block mt-2">📘 JAMB Past Questions</a>
+  <!-- Study Materials -->
+  <section class="bg-gray-50 py-12">
+    <div class="container mx-auto px-6">
+      <h3 class="text-3xl font-bold mb-6 text-center">📚 Study Materials</h3>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+          <h4 class="text-xl font-semibold mb-3">Free Notes</h4>
+          <a href="https://openstax.org/" target="_blank" class="text-blue-600 underline block">OpenStax Textbooks</a>
+          <a href="https://waeconline.org.ng" target="_blank" class="text-blue-600 underline block mt-2">WAEC Study Notes</a>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+          <h4 class="text-xl font-semibold mb-3">Online Courses</h4>
+          <a href="https://www.khanacademy.org" target="_blank" class="text-green-600 underline block">Khan Academy</a>
+          <a href="https://alison.com/" target="_blank" class="text-green-600 underline block mt-2">Alison Free Courses</a>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+          <h4 class="text-xl font-semibold mb-3">YouTube</h4>
+          <a href="https://www.youtube.com/@KhanAcademy" target="_blank" class="text-red-600 underline block">Khan Academy</a>
+          <a href="https://www.youtube.com/@NigerianScholars" target="_blank" class="text-red-600 underline block mt-2">Nigerian Scholars</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Schools -->
+  <section id="schools" class="container mx-auto px-6 py-12">
+    <h3 class="text-3xl font-bold mb-6 text-center">🏫 Schools in Jama'are</h3>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1588075592446-2490a4b9b7b5?w=600" class="w-full h-40 object-cover">
+        <div class="p-4">
+          <h4 class="font-bold">Government Day Secondary School Jama'are</h4>
+          <p class="text-sm">One of the largest secondary schools in Jama’are.</p>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1600326146109-44a6e9c82c7b?w=600" class="w-full h-40 object-cover">
+        <div class="p-4">
+          <h4 class="font-bold">Federal Government College Jama'are</h4>
+          <p class="text-sm">Top federal unity school in the area.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hospitals -->
+  <section id="hospitals" class="bg-gray-50 py-12">
+    <div class="container mx-auto px-6">
+      <h3 class="text-3xl font-bold mb-6 text-center">🏥 Hospitals in Jama'are</h3>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1584438784894-089d6a62b8d6?w=600" class="w-full h-40 object-cover">
+          <div class="p-4">
+            <h4 class="font-bold">General Hospital Jama'are</h4>
+            <a href="https://maps.google.com?q=General+Hospital+Jama'are" target="_blank" class="text-blue-600 underline">📍 View on Google Maps</a>
+          </div>
+        </div>
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1576765608535-5ef9c2c9aa78?w=600" class="w-full h-40 object-cover">
+          <div class="p-4">
+            <h4 class="font-bold">Primary Health Care Centre Jama'are</h4>
+            <a href="https://maps.google.com?q=PHC+Jama'are" target="_blank" class="text-blue-600 underline">📍 View on Google Maps</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEPA Section -->
+  <section id="nepa" class="container mx-auto px-6 py-12">
+    <h3 class="text-3xl font-bold mb-6 text-center">💡 NEPA / Electricity Offices</h3>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="bg-white p-6 rounded-lg shadow-lg">
+        <h4 class="font-bold mb-2">Main NEPA Office Jama'are</h4>
+        <p class="text-sm">Located at Jama’are Town Centre.</p>
+        <a href="https://maps.google.com?q=NEPA+Office+Jama'are" target="_blank" class="text-blue-600 underline">📍 View on Google Maps</a>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow-lg">
+        <h4 class="font-bold mb-2">Branch NEPA Office Jama'are</h4>
+        <p class="text-sm">Located near Jama’are market.</p>
+        <a href="https://maps.google.com?q=NEPA+Office+Jama'are+Market" target="_blank" class="text-blue-600 underline">📍 View on Google Maps</a>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-blue-800 text-white py-6 mt-12 text-center">
-    <p>© 2025 Jama'are Community Hub. All Rights Reserved.</p>
+  <footer class="bg-blue-900 text-white py-8 mt-12">
+    <div class="container mx-auto px-6 text-center">
+      <p class="mb-3">© 2025 Jama'are Community Hub. All Rights Reserved.</p>
+      <div class="flex justify-center space-x-4">
+        <a href="mailto:info@jamaarehub.org" class="hover:text-yellow-300"><i class="fa fa-envelope"></i></a>
+        <a href="https://facebook.com" target="_blank" class="hover:text-yellow-300"><i class="fab fa-facebook"></i></a>
+        <a href="https://twitter.com" target="_blank" class="hover:text-yellow-300"><i class="fab fa-twitter"></i></a>
+        <a href="https://wa.me/2348000000000" target="_blank" class="hover:text-yellow-300"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
   </footer>
 
+  <!-- Search Script -->
   <script>
-    // Simple Search Function
     function searchResources() {
       const input = document.getElementById("searchBar").value.toLowerCase();
       const resources = document.querySelectorAll("#resourcesList div");
