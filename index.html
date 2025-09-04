@@ -7,33 +7,78 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body class="bg-gray-100 text-gray-800">
+<body class="bg-gray-50 text-gray-800">
 
   <!-- Navbar -->
-  <nav class="bg-blue-600 text-white p-4 shadow-lg flex justify-between items-center">
+  <nav class="bg-blue-700 text-white p-4 shadow-md flex justify-between items-center">
     <h1 class="text-xl font-bold">Jama'are Community Hub</h1>
-    <div>
-      <button onclick="toggleHausa()" class="bg-white text-blue-600 px-3 py-1 rounded">Hausa/English</button>
+    <div class="space-x-6 hidden md:flex">
+      <a href="#home" class="hover:underline">Home</a>
+      <a href="#education" class="hover:underline">Education</a>
+      <a href="#schools" class="hover:underline">Schools</a>
+      <a href="#hospitals" class="hover:underline">Hospitals</a>
+      <a href="#nepa" class="hover:underline">NEPA</a>
+      <a href="#feedback" class="hover:underline">Feedback</a>
     </div>
+    <button onclick="toggleHausa()" class="bg-white text-blue-700 px-3 py-1 rounded">Hausa/English</button>
   </nav>
 
   <!-- Hero -->
-  <header class="bg-gradient-to-r from-blue-500 to-green-500 text-white text-center p-12">
-    <h2 class="text-3xl font-bold">Welcome to Jama'are Community Hub</h2>
-    <p class="mt-2">Your one-stop access to schools, hospitals, electricity info & study materials.</p>
+  <header id="home" class="bg-gradient-to-r from-blue-600 to-green-500 text-white text-center py-16">
+    <h2 class="text-4xl font-bold mb-4">Welcome to Jama'are Community Hub</h2>
+    <p class="text-lg max-w-2xl mx-auto">Helping students and community members with schools, hospitals, electricity info, and exam resources to achieve success.</p>
+    <div class="mt-6">
+      <input type="text" placeholder="Search resources..." class="px-4 py-2 rounded w-72 text-gray-700">
+      <button class="bg-yellow-400 px-4 py-2 rounded text-black font-bold ml-2">Search</button>
+    </div>
   </header>
 
+  <!-- Education -->
+  <section id="education" class="p-8">
+    <h3 class="text-3xl font-bold mb-6 text-center"><i class="fa-solid fa-book-open"></i> Education Resources</h3>
+    <div class="grid md:grid-cols-3 gap-6">
+
+      <!-- WAEC -->
+      <div class="bg-white p-6 rounded shadow hover:shadow-lg">
+        <h4 class="font-bold text-xl mb-2 text-blue-700">WAEC</h4>
+        <p>📅 Registration: January – March</p>
+        <p>📝 Exam: May – June</p>
+        <a href="#" class="text-blue-600 underline">📄 Download WAEC Timetable (PDF)</a><br>
+        <a href="#" class="text-blue-600 underline">📘 WAEC Past Questions</a>
+      </div>
+
+      <!-- NECO -->
+      <div class="bg-white p-6 rounded shadow hover:shadow-lg">
+        <h4 class="font-bold text-xl mb-2 text-green-700">NECO</h4>
+        <p>📅 Registration: January – March</p>
+        <p>📝 Exam: June – July</p>
+        <a href="#" class="text-green-600 underline">📄 Download NECO Timetable (PDF)</a><br>
+        <a href="#" class="text-green-600 underline">📘 NECO Past Questions</a>
+      </div>
+
+      <!-- JAMB -->
+      <div class="bg-white p-6 rounded shadow hover:shadow-lg">
+        <h4 class="font-bold text-xl mb-2 text-red-700">JAMB</h4>
+        <p>📅 Registration: March – May</p>
+        <p>📝 Exam: April – May</p>
+        <a href="#" class="text-red-600 underline">📄 Download JAMB Syllabus</a><br>
+        <a href="#" class="text-red-600 underline">📘 JAMB Past Questions</a>
+      </div>
+
+    </div>
+  </section>
+
   <!-- Schools -->
-  <section id="schools" class="p-6">
-    <h3 class="text-2xl font-bold mb-4"><i class="fa-solid fa-school"></i> Schools in Jama'are</h3>
+  <section id="schools" class="p-8 bg-gray-100">
+    <h3 class="text-3xl font-bold mb-6 text-center"><i class="fa-solid fa-school"></i> Schools in Jama'are</h3>
     <div class="grid md:grid-cols-2 gap-6">
       <div class="bg-white p-4 rounded shadow">
-        <img src="https://images.unsplash.com/photo-1604881980689-7249a23f35f2" alt="Secondary School" class="rounded mb-3 w-full h-48 object-cover">
+        <img src="https://images.unsplash.com/photo-1604881980689-7249a23f35f2?w=600" alt="Secondary School" class="rounded mb-3 w-full h-48 object-cover">
         <h4 class="font-bold">Government Secondary School Jama'are</h4>
         <p>📍 Jama'are Town</p>
       </div>
       <div class="bg-white p-4 rounded shadow">
-        <img src="https://images.unsplash.com/photo-1596495577886-d920f1fb7238" alt="Primary School" class="rounded mb-3 w-full h-48 object-cover">
+        <img src="https://images.unsplash.com/photo-1596495577886-d920f1fb7238?w=600" alt="Primary School" class="rounded mb-3 w-full h-48 object-cover">
         <h4 class="font-bold">Primary School Jama'are</h4>
         <p>📍 Jama'are Town</p>
       </div>
@@ -41,16 +86,16 @@
   </section>
 
   <!-- Hospitals -->
-  <section id="hospitals" class="p-6 bg-gray-50">
-    <h3 class="text-2xl font-bold mb-4"><i class="fa-solid fa-hospital"></i> Hospitals in Jama'are</h3>
+  <section id="hospitals" class="p-8">
+    <h3 class="text-3xl font-bold mb-6 text-center"><i class="fa-solid fa-hospital"></i> Hospitals in Jama'are</h3>
     <div class="grid md:grid-cols-2 gap-6">
       <div class="bg-white p-4 rounded shadow">
-        <img src="https://images.unsplash.com/photo-1584438784894-089d6a62b8d6" alt="General Hospital" class="rounded mb-3 w-full h-48 object-cover">
+        <img src="https://images.unsplash.com/photo-1584438784894-089d6a62b8d6?w=600" alt="General Hospital" class="rounded mb-3 w-full h-48 object-cover">
         <h4 class="font-bold">General Hospital Jama'are</h4>
         <p>📍 Jama'are, Bauchi State</p>
       </div>
       <div class="bg-white p-4 rounded shadow">
-        <img src="https://images.unsplash.com/photo-1580281657521-6a0b2d6d3c58" alt="Primary Health Center" class="rounded mb-3 w-full h-48 object-cover">
+        <img src="https://images.unsplash.com/photo-1580281657521-6a0b2d6d3c58?w=600" alt="Primary Health Center" class="rounded mb-3 w-full h-48 object-cover">
         <h4 class="font-bold">Primary Health Center Jama'are</h4>
         <p>📍 Jama'are Town</p>
       </div>
@@ -58,41 +103,40 @@
   </section>
 
   <!-- NEPA -->
-  <section id="nepa" class="p-6">
-    <h3 class="text-2xl font-bold mb-4"><i class="fa-solid fa-bolt"></i> NEPA Office in Jama'are</h3>
-    <div class="bg-white p-4 rounded shadow">
-      <img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231" alt="Electricity Office" class="rounded mb-3 w-full h-48 object-cover">
+  <section id="nepa" class="p-8 bg-gray-100">
+    <h3 class="text-3xl font-bold mb-6 text-center"><i class="fa-solid fa-bolt"></i> NEPA Office in Jama'are</h3>
+    <div class="bg-white p-6 rounded shadow">
+      <img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?w=600" alt="Electricity Office" class="rounded mb-3 w-full h-48 object-cover">
       <h4 class="font-bold">NEPA Office Jama'are</h4>
       <p>📍 Near Emir's Palace, Jama'are</p>
       <a href="https://maps.google.com?q=NEPA+Office+Jamaare" target="_blank" class="text-blue-600 underline">📍 View on Google Maps</a>
     </div>
   </section>
 
-  <!-- Feedback Form -->
-  <section id="feedback" class="p-6 bg-gray-50">
-    <h3 class="text-2xl font-bold mb-4"><i class="fa-solid fa-comment-dots"></i> Feedback</h3>
-    <form id="feedbackForm" action="https://formspree.io/f/mrbakllz" method="POST" class="bg-white p-4 rounded shadow max-w-lg">
+  <!-- Feedback -->
+  <section id="feedback" class="p-8">
+    <h3 class="text-3xl font-bold mb-6 text-center"><i class="fa-solid fa-comment-dots"></i> Feedback</h3>
+    <form id="feedbackForm" action="https://formspree.io/f/mrbakllz" method="POST" class="bg-white p-6 rounded shadow max-w-lg mx-auto">
       <input type="text" name="name" placeholder="Your Name" required class="w-full border p-2 mb-3 rounded">
       <input type="email" name="email" placeholder="Your Email" required class="w-full border p-2 mb-3 rounded">
       <textarea name="message" placeholder="Your Message" required class="w-full border p-2 mb-3 rounded"></textarea>
-      <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">Submit</button>
+      <button type="submit" class="bg-blue-700 text-white px-4 py-2 rounded">Submit</button>
       <div id="spinner" class="hidden mt-2">⏳ Sending...</div>
       <div id="successMessage" class="hidden mt-2 text-green-600">✅ Thank you! Your message was sent.</div>
     </form>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-blue-600 text-white text-center p-4 mt-6">
-    <p>&copy; 2025 Jama'are Community Hub. All rights reserved.</p>
+  <footer class="bg-blue-700 text-white text-center p-4">
+    <p>&copy; 2025 Jama'are Community Hub | Built for Students & Community</p>
   </footer>
 
-  <!-- Hausa Toggle Script -->
+  <!-- Scripts -->
   <script>
     function toggleHausa() {
-      alert("Hausa translation coming soon!"); 
+      alert("Hausa translation coming soon!");
     }
 
-    // Feedback form
     const form = document.getElementById("feedbackForm");
     const spinner = document.getElementById("spinner");
     const successMessage = document.getElementById("successMessage");
