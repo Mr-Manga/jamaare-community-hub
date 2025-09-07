@@ -39,7 +39,7 @@
   <!-- Hero -->
   <section class="bg-gradient-to-r from-blue-700 to-purple-700 text-white py-20 mt-16">
     <div class="container mx-auto text-center px-4 fade-zoom">
-      <h2 class="text-4xl md:text-5xl font-bold mb-4">Welcome to Jama'are Community Hub</h2>
+      <h2 id="heroText" class="text-4xl md:text-5xl font-bold mb-4"></h2>
       <p class="text-lg md:text-xl">Your one-stop place for Education, Health, Power, and Schools in Jama’are.</p>
     </div>
   </section>
@@ -119,36 +119,4 @@
   </section>
 
   <!-- Footer -->
-  <footer class="bg-blue-800 text-white text-center py-6 fade-zoom">
-    <p>&copy; 2025 Jama'are Community Hub. All rights reserved.</p>
-  </footer>
-
-  <!-- Back to Top -->
-  <button id="backToTop" onclick="scrollToTop()" 
-          class="hidden fixed bottom-6 right-6 bg-yellow-400 text-black px-4 py-2 rounded-full shadow-lg hover:bg-yellow-500 transition">
-    ⬆️ Top
-  </button>
-
-  <!-- Scripts -->
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      document.querySelectorAll(".fade-zoom").forEach(el => {
-        setTimeout(() => el.classList.add("visible"), 300);
-      });
-    });
-
-    window.addEventListener("scroll", () => {
-      const navbar = document.getElementById("navbar");
-      if (window.scrollY > 50) {
-        navbar.classList.add("scrolled");
-      } else {
-        navbar.classList.remove("scrolled");
-      }
-      document.getElementById("backToTop").classList.toggle("hidden", window.scrollY < 200);
-    });
-
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-
-    function searchResources() {
+  <footer class="bg-blue-800 text-white text-center py-6 fade-
