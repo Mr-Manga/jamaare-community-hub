@@ -24,25 +24,40 @@
       
       <!-- Search Bar -->
       <div class="hidden md:flex items-center space-x-2">
-        <input type="text" id="searchBar" placeholder="Search resources..." class="px-3 py-1 rounded text-black w-60" />
-        <button onclick="searchResources()" class="bg-yellow-400 px-3 py-1 rounded text-black font-semibold">Search</button>
+        <input type="text" id="searchBar" placeholder="Search resources..." class="px-3 py-1 rounded text-black w-60 focus:ring focus:ring-yellow-400 outline-none transition" />
+        <button onclick="searchResources()" class="bg-yellow-400 px-3 py-1 rounded text-black font-semibold hover:bg-yellow-500 transition">Search</button>
       </div>
 
       <!-- Menu -->
       <div class="space-x-6 hidden md:flex">
-        <a href="#education" class="hover:text-yellow-300">Education</a>
-        <a href="#schools" class="hover:text-yellow-300">Schools</a>
-        <a href="#hospitals" class="hover:text-yellow-300">Hospitals</a>
-        <a href="#nepa" class="hover:text-yellow-300">NEPA</a>
+        <a href="#education" class="hover:text-yellow-300 transition">Education</a>
+        <a href="#schools" class="hover:text-yellow-300 transition">Schools</a>
+        <a href="#hospitals" class="hover:text-yellow-300 transition">Hospitals</a>
+        <a href="#nepa" class="hover:text-yellow-300 transition">NEPA</a>
       </div>
+
+      <!-- Mobile Menu Button -->
+      <button id="menuBtn" class="md:hidden text-white text-2xl"><i class="fas fa-bars"></i></button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="hidden bg-blue-700 text-white px-4 py-3 space-y-2 md:hidden">
+      <a href="#education" class="block hover:text-yellow-300">Education</a>
+      <a href="#schools" class="block hover:text-yellow-300">Schools</a>
+      <a href="#hospitals" class="block hover:text-yellow-300">Hospitals</a>
+      <a href="#nepa" class="block hover:text-yellow-300">NEPA</a>
     </div>
   </nav>
 
   <!-- Hero -->
   <section class="bg-gradient-to-r from-blue-700 to-purple-700 text-white py-16">
     <div class="container mx-auto text-center px-4">
-      <h2 class="text-4xl md:text-5xl font-bold mb-4">Welcome to Jama'are Community Hub</h2>
-      <p class="text-lg md:text-xl">Your one-stop place for Education, Health, Power, and Schools in Jama’are.</p>
+      <h2 class="text-4xl md:text-5xl font-bold mb-4 animate-fadeIn">Welcome to Jama'are Community Hub</h2>
+      <p class="text-lg md:text-xl mb-6 animate-fadeIn delay-200">Your one-stop place for Education, Health, Power, and Schools in Jama’are.</p>
+      <!-- Jama'are Image -->
+      <img src="https://www.medianigeria.com/wp-content/uploads/2022/02/Jamaare-LGA.jpg" 
+           alt="Jama'are Town" 
+           class="mx-auto rounded-lg shadow-2xl w-full md:w-3/4 lg:w-2/3 transform hover:scale-105 transition duration-500" />
     </div>
   </section>
 
@@ -50,17 +65,17 @@
   <section id="education" class="container mx-auto px-6 py-12">
     <h3 class="text-3xl font-bold mb-6 text-center">📘 Education Resources</h3>
     <div id="resourcesList" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition">
+      <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-2xl transform hover:scale-105 transition">
         <h4 class="text-xl font-semibold mb-3">WAEC</h4>
         <a href="resources/waec-timetable.pdf" target="_blank" class="text-blue-600 underline block">📄 WAEC Timetable</a>
         <a href="resources/waec-pastquestions.pdf" target="_blank" class="text-blue-600 underline block mt-2">📘 Past Questions</a>
       </div>
-      <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition">
+      <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-2xl transform hover:scale-105 transition">
         <h4 class="text-xl font-semibold mb-3">NECO</h4>
         <a href="resources/neco-timetable.pdf" target="_blank" class="text-green-600 underline block">📄 NECO Timetable</a>
         <a href="resources/neco-pastquestions.pdf" target="_blank" class="text-green-600 underline block mt-2">📘 Past Questions</a>
       </div>
-      <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition">
+      <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-2xl transform hover:scale-105 transition">
         <h4 class="text-xl font-semibold mb-3">JAMB</h4>
         <a href="resources/jamb-syllabus.pdf" target="_blank" class="text-red-600 underline block">📄 JAMB Syllabus</a>
         <a href="resources/jamb-pastquestions.pdf" target="_blank" class="text-red-600 underline block mt-2">📘 Past Questions</a>
@@ -72,14 +87,14 @@
   <section id="schools" class="container mx-auto px-6 py-12">
     <h3 class="text-3xl font-bold mb-6 text-center">🏫 Schools in Jama'are</h3>
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+      <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition">
         <img src="images-assets/school1.png" class="w-full h-40 object-cover" />
         <div class="p-4">
           <h4 class="font-bold">Government Day Secondary School Jama'are</h4>
           <p class="text-sm">One of the largest secondary schools in Jama’are.</p>
         </div>
       </div>
-      <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+      <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition">
         <img src="images-assets/school2.png" class="w-full h-40 object-cover" />
         <div class="p-4">
           <h4 class="font-bold">Federal Government College Jama'are</h4>
@@ -94,14 +109,14 @@
     <div class="container mx-auto px-6">
       <h3 class="text-3xl font-bold mb-6 text-center">🏥 Hospitals in Jama'are</h3>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition">
           <img src="images-assets/hospital1.png" class="w-full h-40 object-cover" />
           <div class="p-4">
             <h4 class="font-bold">General Hospital Jama'are</h4>
             <a href="https://maps.google.com?q=General+Hospital+Jama'are" target="_blank" class="text-blue-600 underline">📍 View on Google Maps</a>
           </div>
         </div>
-        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition">
           <img src="images-assets/hospital2.png" class="w-full h-40 object-cover" />
           <div class="p-4">
             <h4 class="font-bold">Primary Health Care Centre Jama'are</h4>
@@ -116,7 +131,32 @@
   <section id="nepa" class="container mx-auto px-6 py-12">
     <h3 class="text-3xl font-bold mb-6 text-center">💡 NEPA / Electricity Offices</h3>
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <div class="bg-white p-6 rounded-lg shadow-lg">
+      <div class="bg-white p-6 rounded-lg shadow-lg transform hover:scale-105 transition">
         <h4 class="font-bold mb-2">Main NEPA Office Jama'are</h4>
         <p class="text-sm">Located at Jama’are Town Centre.</p>
-        <a href="https://maps.google.com?q=NEPA+Office+Jama'are" target="_blank" class="text-blue-600 underline">📍 View on Google Maps_
+        <a href="https://maps.google.com?q=NEPA+Office+Jama'are" target="_blank" class="text-blue-600 underline">📍 View on Google Maps</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-blue-800 text-white py-6 mt-12">
+    <div class="container mx-auto px-4 text-center">
+      <p>&copy; 2025 Jama'are Community Hub. All rights reserved.</p>
+      <div class="flex justify-center space-x-4 mt-3">
+        <a href="#" class="hover:text-yellow-400"><i class="fab fa-facebook"></i></a>
+        <a href="#" class="hover:text-yellow-400"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="hover:text-yellow-400"><i class="fab fa-whatsapp"></i></a>
+      </div>
+      <p class="text-sm mt-2">Designed with ❤️ for Jama’are Community</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    function searchResources() {
+      const query = document.getElementById("searchBar").value.toLowerCase();
+      const resources = document.querySelectorAll("#resourcesList div");
+
+      resources.forEach(resource => {
+        if (resource.innerText.toLowerCase().includes(query)
