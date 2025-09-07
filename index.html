@@ -5,18 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jama'are Community Hub</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    /* Fade-zoom effect */
-    .fade-zoom {
-      opacity: 0;
-      transform: scale(0.95);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-    .fade-zoom.visible {
-      opacity: 1;
-      transform: scale(1);
-    }
-  </style>
 </head>
 <body class="bg-gray-100">
 
@@ -33,15 +21,15 @@
   </nav>
 
   <!-- Hero Section -->
-  <section class="bg-gradient-to-r from-blue-700 to-purple-700 text-white py-32 mt-16 fade-zoom visible">
+  <section class="bg-gradient-to-r from-blue-700 to-purple-700 text-white py-32 mt-16">
     <div class="container mx-auto text-center px-4">
-      <h2 id="heroText" class="text-4xl md:text-5xl font-bold mb-4">Welcome to Jama'are Community Hub</h2>
+      <h2 class="text-4xl md:text-5xl font-bold mb-4">Welcome to Jama'are Community Hub</h2>
       <p class="text-lg md:text-xl">Your one-stop place for Education, Health, Power, and Schools in Jama’are.</p>
     </div>
   </section>
 
   <!-- About Section -->
-  <section id="about" class="py-20 fade-zoom">
+  <section id="about" class="py-20">
     <div class="container mx-auto px-4 text-center">
       <h3 class="text-3xl font-bold mb-6">About Jama'are</h3>
       <p class="text-lg max-w-2xl mx-auto">Jama'are Community Hub is dedicated to providing information, resources, and services that support education, health, and development in our community. We connect residents with opportunities and empower growth.</p>
@@ -49,7 +37,7 @@
   </section>
 
   <!-- Services Section -->
-  <section id="services" class="bg-white py-20 fade-zoom">
+  <section id="services" class="bg-white py-20">
     <div class="container mx-auto px-4 text-center">
       <h3 class="text-3xl font-bold mb-12">Our Services</h3>
       <div class="grid md:grid-cols-3 gap-8">
@@ -70,7 +58,7 @@
   </section>
 
   <!-- Contact Section -->
-  <section id="contact" class="py-20 fade-zoom bg-gray-50">
+  <section id="contact" class="py-20 bg-gray-50">
     <div class="container mx-auto px-4 text-center">
       <h3 class="text-3xl font-bold mb-6">Contact Us</h3>
       <p class="text-lg mb-6">Have questions or suggestions? Reach out to us!</p>
@@ -79,31 +67,9 @@
   </section>
 
   <!-- Footer -->
-  <footer class="bg-blue-700 text-white py-6 text-center fade-zoom">
+  <footer class="bg-blue-700 text-white py-6 text-center">
     <p>&copy; 2025 Jama'are Community Hub. All rights reserved.</p>
   </footer>
-
-  <!-- Scripts -->
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      // Typewriter effect
-      const heroElement = document.getElementById("heroText");
-      const text = "Welcome to Jama'are Community Hub";
-      heroElement.innerHTML = ""; // Clear fallback text
-      let i = 0;
-      function typeWriter() {
-        if (i < text.length) {
-          heroElement.innerHTML += text.charAt(i);
-          i++;
-          setTimeout(typeWriter, 80);
-        }
-      }
-      typeWriter();
-
-      // Make all fade-zoom sections visible
-      document.querySelectorAll(".fade-zoom").forEach(el => el.classList.add("visible"));
-    });
-  </script>
 
 </body>
 </html>
