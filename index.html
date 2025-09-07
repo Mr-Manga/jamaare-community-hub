@@ -6,84 +6,78 @@
   <title>Jama'are Community Hub</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    /* Smooth scroll for anchor links */
     html {
       scroll-behavior: smooth;
     }
-    /* Custom gold colors */
-    .bg-gold {
-      background-color: #FFD700;
-    }
-    .text-gold {
-      color: #FFD700;
-    }
-    .hover-bg-gold:hover {
-      background-color: #FFC700;
-    }
+    /* Gold theme */
+    .bg-gold { background-color: #FFD700; }
+    .text-gold { color: #FFD700; }
+    .hover-gold:hover { background-color: #FFC700; }
   </style>
 </head>
-<body class="bg-gray-100">
+<body class="bg-gray-50 font-sans">
 
   <!-- Navbar -->
-  <nav class="bg-gold text-white fixed w-full z-10 shadow-md">
+  <nav class="fixed w-full z-20 bg-white bg-opacity-90 backdrop-blur-md shadow-md">
     <div class="container mx-auto flex justify-between items-center py-4 px-6">
-      <a href="#" class="font-bold text-xl text-white">Jama'are Hub</a>
-      <ul class="flex space-x-6">
-        <li><a href="#about" class="hover:text-gray-100">About</a></li>
-        <li><a href="#services" class="hover:text-gray-100">Services</a></li>
-        <li><a href="#contact" class="hover:text-gray-100">Contact</a></li>
+      <a href="#" class="font-bold text-2xl text-gold">Jama'are Hub</a>
+      <ul class="flex space-x-6 text-gray-700 font-medium">
+        <li><a href="#about" class="hover:text-gold transition">About</a></li>
+        <li><a href="#services" class="hover:text-gold transition">Services</a></li>
+        <li><a href="#contact" class="hover:text-gold transition">Contact</a></li>
       </ul>
     </div>
   </nav>
 
   <!-- Hero Section -->
-  <section class="bg-gradient-to-r from-yellow-400 to-yellow-600 text-white py-32 mt-16">
-    <div class="container mx-auto text-center px-4">
-      <h2 class="text-4xl md:text-5xl font-bold mb-4">Welcome to Jama'are Community Hub</h2>
-      <p class="text-lg md:text-xl">Your one-stop place for Education, Health, Power, and Schools in Jama’are.</p>
+  <section class="bg-gradient-to-r from-yellow-400 to-yellow-600 text-white py-32 mt-16 relative">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-5xl md:text-6xl font-extrabold mb-6 leading-tight">Welcome to Jama'are Community Hub</h1>
+      <p class="text-lg md:text-xl max-w-2xl mx-auto mb-8">Connecting Education, Health, Power, and Community Services for a better Jama’are.</p>
+      <a href="#contact" class="inline-block bg-white text-yellow-600 font-semibold px-8 py-3 rounded-full shadow-lg hover:shadow-xl hover-gold transition">Get in Touch</a>
     </div>
   </section>
 
   <!-- About Section -->
   <section id="about" class="py-20">
     <div class="container mx-auto px-4 text-center">
-      <h3 class="text-3xl font-bold mb-6 text-gold">About Jama'are</h3>
-      <p class="text-lg max-w-2xl mx-auto">Jama'are Community Hub is dedicated to providing information, resources, and services that support education, health, and development in our community. We connect residents with opportunities and empower growth.</p>
+      <h2 class="text-4xl font-bold mb-6 text-gold">About Jama'are</h2>
+      <p class="text-lg md:text-xl max-w-3xl mx-auto leading-relaxed text-gray-700">Jama'are Community Hub is dedicated to providing valuable resources and information that support education, health, power infrastructure, and community development. Our goal is to connect residents with opportunities and empower growth.</p>
     </div>
   </section>
 
   <!-- Services Section -->
-  <section id="services" class="bg-white py-20">
+  <section id="services" class="py-20 bg-gray-100">
     <div class="container mx-auto px-4 text-center">
-      <h3 class="text-3xl font-bold mb-12 text-gold">Our Services</h3>
+      <h2 class="text-4xl font-bold mb-12 text-gold">Our Services</h2>
       <div class="grid md:grid-cols-3 gap-8">
-        <div class="p-6 border rounded-lg shadow hover:shadow-lg transition">
-          <h4 class="text-xl font-semibold mb-2 text-gold">Education</h4>
-          <p>Access to schools, learning resources, and educational programs.</p>
+        <div class="bg-white rounded-xl shadow-lg p-8 hover:scale-105 transform transition duration-300">
+          <h3 class="text-2xl font-semibold mb-4 text-gold">Education</h3>
+          <p class="text-gray-700">Access to schools, learning resources, and educational programs for all community members.</p>
         </div>
-        <div class="p-6 border rounded-lg shadow hover:shadow-lg transition">
-          <h4 class="text-xl font-semibold mb-2 text-gold">Health</h4>
-          <p>Health facilities, awareness programs, and wellness support.</p>
+        <div class="bg-white rounded-xl shadow-lg p-8 hover:scale-105 transform transition duration-300">
+          <h3 class="text-2xl font-semibold mb-4 text-gold">Health</h3>
+          <p class="text-gray-700">Health facilities, awareness programs, and wellness support to improve community well-being.</p>
         </div>
-        <div class="p-6 border rounded-lg shadow hover:shadow-lg transition">
-          <h4 class="text-xl font-semibold mb-2 text-gold">Power & Infrastructure</h4>
-          <p>Information on power supply, infrastructure, and community development.</p>
+        <div class="bg-white rounded-xl shadow-lg p-8 hover:scale-105 transform transition duration-300">
+          <h3 class="text-2xl font-semibold mb-4 text-gold">Power & Infrastructure</h3>
+          <p class="text-gray-700">Information and support regarding power supply, roads, and community infrastructure projects.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Contact Section -->
-  <section id="contact" class="py-20 bg-gray-50">
+  <section id="contact" class="py-20">
     <div class="container mx-auto px-4 text-center">
-      <h3 class="text-3xl font-bold mb-6 text-gold">Contact Us</h3>
-      <p class="text-lg mb-6">Have questions or suggestions? Reach out to us!</p>
-      <a href="mailto:info@jamaarehub.com" class="inline-block bg-gold text-white px-6 py-3 rounded hover-bg-gold transition">Email Us</a>
+      <h2 class="text-4xl font-bold mb-6 text-gold">Contact Us</h2>
+      <p class="text-lg mb-8 text-gray-700">Have questions or suggestions? Reach out to us anytime—we're happy to help!</p>
+      <a href="mailto:info@jamaarehub.com" class="inline-block bg-gold text-white font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-xl hover-gold transition">Email Us</a>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-gold text-white py-6 text-center">
+  <footer class="bg-gray-800 text-white py-6 text-center">
     <p>&copy; 2025 Jama'are Community Hub. All rights reserved.</p>
   </footer>
 
