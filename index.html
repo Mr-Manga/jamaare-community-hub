@@ -3,83 +3,148 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jama'are Community Hub</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Jama'are Hub</title>
   <style>
-    html { scroll-behavior: smooth; }
-    /* Professional colors */
-    .bg-primary { background-color: #1E3A8A; } /* Deep blue */
-    .text-primary { color: #1E3A8A; }
-    .bg-accent { background-color: #FBBF24; } /* Soft gold/orange for buttons */
-    .text-accent { color: #FBBF24; }
-    .hover-accent:hover { background-color: #F59E0B; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f6f9;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: linear-gradient(90deg, #1a3cff, #7b2ff7);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 50px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar-logo {
+      font-size: 22px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .navbar-logo span {
+      font-size: 26px;
+    }
+
+    .navbar input {
+      padding: 8px 15px;
+      border-radius: 5px;
+      border: none;
+      width: 250px;
+      outline: none;
+    }
+
+    .navbar-links a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .navbar-links a:hover {
+      text-decoration: underline;
+    }
+
+    /* Main Content */
+    .container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 30px;
+    }
+
+    /* Contact Form */
+    .contact-form {
+      background: white;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .contact-form label {
+      display: block;
+      margin: 10px 0 5px;
+      font-weight: bold;
+      color: #444;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-bottom: 15px;
+      font-size: 14px;
+    }
+
+    .contact-form textarea {
+      height: 120px;
+      resize: none;
+    }
+
+    .contact-form button {
+      background: linear-gradient(90deg, #1a3cff, #7b2ff7);
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .contact-form button:hover {
+      opacity: 0.9;
+    }
   </style>
 </head>
-<body class="bg-gray-50 font-sans">
+<body>
 
   <!-- Navbar -->
-  <nav class="fixed w-full z-20 bg-white shadow-md">
-    <div class="container mx-auto flex justify-between items-center py-4 px-6">
-      <a href="#" class="font-bold text-2xl text-primary">Jama'are Hub</a>
-      <ul class="flex space-x-6 text-gray-700 font-medium">
-        <li><a href="#about" class="hover:text-accent transition">About</a></li>
-        <li><a href="#services" class="hover:text-accent transition">Services</a></li>
-        <li><a href="#contact" class="hover:text-accent transition">Contact</a></li>
-      </ul>
+  <div class="navbar">
+    <div class="navbar-logo">
+      🌍 Jama'are Hub
     </div>
-  </nav>
-
-  <!-- Hero Section -->
-  <section class="bg-primary text-white py-32 mt-16">
-    <div class="container mx-auto px-4 text-center">
-      <h1 class="text-5xl md:text-6xl font-extrabold mb-6 leading-tight">Welcome to Jama'are Community Hub</h1>
-      <p class="text-lg md:text-xl max-w-2xl mx-auto mb-8">Connecting Education, Health, Power, and Community Services for a better Jama’are.</p>
-      <a href="#contact" class="inline-block bg-accent text-white font-semibold px-8 py-3 rounded-full shadow-lg hover-accent transition">Get in Touch</a>
+    <input type="text" placeholder="Search resources...">
+    <div class="navbar-links">
+      <a href="#">Education</a>
+      <a href="#">Schools</a>
+      <a href="#">Hospitals</a>
+      <a href="#">NEPA</a>
     </div>
-  </section>
+  </div>
 
-  <!-- About Section -->
-  <section id="about" class="py-20">
-    <div class="container mx-auto px-4 text-center">
-      <h2 class="text-4xl font-bold mb-6 text-primary">About Jama'are</h2>
-      <p class="text-lg md:text-xl max-w-3xl mx-auto leading-relaxed text-gray-700">Jama'are Community Hub is dedicated to providing valuable resources and information that support education, health, power infrastructure, and community development. Our goal is to connect residents with opportunities and empower growth.</p>
-    </div>
-  </section>
+  <!-- Main Content -->
+  <div class="container">
+    <h1>Contact Us</h1>
+    <form class="contact-form" action="https://formspree.io/f/mrbakllz" method="POST">
+      <label for="name">Your Name</label>
+      <input type="text" id="name" name="name" placeholder="Enter your name" required>
 
-  <!-- Services Section -->
-  <section id="services" class="py-20 bg-gray-100">
-    <div class="container mx-auto px-4 text-center">
-      <h2 class="text-4xl font-bold mb-12 text-primary">Our Services</h2>
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="bg-white rounded-xl shadow-lg p-8 hover:scale-105 transform transition duration-300">
-          <h3 class="text-2xl font-semibold mb-4 text-accent">Education</h3>
-          <p class="text-gray-700">Access to schools, learning resources, and educational programs for all community members.</p>
-        </div>
-        <div class="bg-white rounded-xl shadow-lg p-8 hover:scale-105 transform transition duration-300">
-          <h3 class="text-2xl font-semibold mb-4 text-accent">Health</h3>
-          <p class="text-gray-700">Health facilities, awareness programs, and wellness support to improve community well-being.</p>
-        </div>
-        <div class="bg-white rounded-xl shadow-lg p-8 hover:scale-105 transform transition duration-300">
-          <h3 class="text-2xl font-semibold mb-4 text-accent">Power & Infrastructure</h3>
-          <p class="text-gray-700">Information and support regarding power supply, roads, and community infrastructure projects.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+      <label for="email">Your Email</label>
+      <input type="email" id="email" name="_replyto" placeholder="Enter your email" required>
 
-  <!-- Contact Section -->
-  <section id="contact" class="py-20">
-    <div class="container mx-auto px-4 text-center">
-      <h2 class="text-4xl font-bold mb-6 text-primary">Contact Us</h2>
-      <p class="text-lg mb-8 text-gray-700">Have questions or suggestions? Reach out to us anytime—we're happy to help!</p>
-      <a href="mailto:info@jamaarehub.com" class="inline-block bg-accent text-white font-semibold px-8 py-4 rounded-full shadow-lg hover-accent transition">Email Us</a>
-    </div>
-  </section>
+      <label for="message">Your Message</label>
+      <textarea id="message" name="message" placeholder="Write your message..." required></textarea>
 
-  <!-- Footer -->
-  <footer class="bg-gray-800 text-white py-6 text-center">
-    <p>&copy; 2025 Jama'are Community Hub. All rights reserved.</p>
-  </footer>
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
 
 </body>
 </html>
