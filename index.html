@@ -3,168 +3,149 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Community Development Project - Jama'are</title>
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-  <!-- Tailwind CSS CDN -->
+  <title>Jama'are Community Hub</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- FontAwesome Icons -->
-  <script src="https://kit.fontawesome.com/a2e0e6ad65.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#d4af37" />
   <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-    }
+    body { font-family: 'Poppins', sans-serif; }
     .gold-gradient {
-      background: linear-gradient(to right, #b8860b, #ffd700);
+      background: linear-gradient(90deg, #d4af37, #f1c40f);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
-    .section-card {
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .section-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-    }
-    html {
-      scroll-behavior: smooth;
-    }
   </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="bg-gray-50 text-gray-900">
 
   <!-- Navbar -->
-  <nav class="bg-white shadow-md sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-      <h1 class="text-2xl font-bold gold-gradient">Jama'are Dev Project</h1>
-      <ul class="hidden md:flex space-x-6 font-medium">
-        <li><a href="#schools" class="hover:text-yellow-600">Schools</a></li>
-        <li><a href="#hospitals" class="hover:text-yellow-600">Hospitals</a></li>
-        <li><a href="#nepa" class="hover:text-yellow-600">NEPA</a></li>
-        <li><a href="#education" class="hover:text-yellow-600">Education</a></li>
-        <li><a href="#contact" class="hover:text-yellow-600">Contact</a></li>
-      </ul>
+  <nav class="bg-gray-900 text-white shadow-md sticky top-0 z-50">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <div class="flex items-center">
+        <i class="fas fa-building text-yellow-400 text-2xl mr-2"></i>
+        <span class="text-2xl font-bold">Jama'are Hub</span>
+      </div>
+      <div class="hidden md:flex space-x-6">
+        <a href="#education" class="hover:text-yellow-400">Education</a>
+        <a href="#schools" class="hover:text-yellow-400">Schools</a>
+        <a href="#hospitals" class="hover:text-yellow-400">Hospitals</a>
+        <a href="#nepa" class="hover:text-yellow-400">NEPA</a>
+        <a href="#contact" class="hover:text-yellow-400">Contact</a>
+      </div>
     </div>
   </nav>
 
   <!-- Hero -->
-  <header class="text-center py-16 bg-gradient-to-r from-yellow-500 to-yellow-300 text-white">
-    <h2 class="text-4xl md:text-5xl font-bold mb-4">Community Development Project</h2>
-    <p class="text-lg md:text-xl">Building a brighter future for Jama'are through education, health, and sustainable services.</p>
-  </header>
-
-  <!-- Schools -->
-  <section id="schools" class="max-w-7xl mx-auto px-6 py-12">
-    <div class="section-card bg-white p-8 rounded-xl shadow-lg">
-      <h3 class="text-3xl font-bold gold-gradient mb-4 flex items-center">
-        <i class="fas fa-school mr-3 text-yellow-600"></i> Schools
-      </h3>
-      <p class="mb-4">Providing access to quality primary, secondary, and tertiary institutions in Jama'are.</p>
-      <ul class="list-disc ml-6">
-        <li>Government Day Secondary School Jama'are</li>
-        <li>Jama'are Model Primary School</li>
-        <li>College of Education Jama'are</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Hospitals -->
-  <section id="hospitals" class="max-w-7xl mx-auto px-6 py-12">
-    <div class="section-card bg-white p-8 rounded-xl shadow-lg">
-      <h3 class="text-3xl font-bold gold-gradient mb-4 flex items-center">
-        <i class="fas fa-hospital mr-3 text-yellow-600"></i> Hospitals
-      </h3>
-      <p class="mb-4">Ensuring accessible healthcare services for the people of Jama'are.</p>
-      <ul class="list-disc ml-6">
-        <li>General Hospital Jama'are</li>
-        <li>Primary Health Care Center Jama'are</li>
-        <li>Private Clinics and Pharmacies</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- NEPA -->
-  <section id="nepa" class="max-w-7xl mx-auto px-6 py-12">
-    <div class="section-card bg-white p-8 rounded-xl shadow-lg">
-      <h3 class="text-3xl font-bold gold-gradient mb-4 flex items-center">
-        <i class="fas fa-bolt mr-3 text-yellow-600"></i> NEPA (Electricity Supply)
-      </h3>
-      <p class="mb-4">Providing reliable electricity supply to support homes, schools, and businesses in Jama'are.</p>
-      <p><strong>NEPA Office Location:</strong> Near Jama'are Central Market, Bauchi State.</p>
+  <section class="bg-gradient-to-r from-gray-900 to-gray-700 text-white py-16">
+    <div class="container mx-auto text-center px-4">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4 gold-gradient">Welcome to Jama'are Community Hub</h1>
+      <p class="text-lg md:text-xl">Connecting Education, Health, and Public Services for Jama’are Local Government.</p>
     </div>
   </section>
 
   <!-- Education -->
-  <section id="education" class="max-w-7xl mx-auto px-6 py-12">
-    <div class="section-card bg-white p-8 rounded-xl shadow-lg">
-      <h3 class="text-3xl font-bold gold-gradient mb-6 flex items-center">
-        <i class="fas fa-book mr-3 text-yellow-600"></i> Education Resources
-      </h3>
-      <p class="mb-6">Free access to WAEC, NECO, and JAMB past questions for both Art and Science students.</p>
+  <section id="education" class="container mx-auto px-6 py-12">
+    <h2 class="text-3xl font-bold text-center mb-2 gold-gradient"><i class="fas fa-book-open mr-2"></i>Education Resources</h2>
+    <p class="text-center text-gray-600 mb-8">Providing free past questions and resources to help Jama’are students succeed.</p>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 
-      <div class="grid md:grid-cols-3 gap-6">
+      <!-- WAEC -->
+      <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
+        <h4 class="text-xl font-semibold mb-3 gold-gradient">WAEC Past Questions</h4>
+        <a href="https://myschoolgist.com/ng/free-waec-past-questions-and-answers/" target="_blank" class="text-blue-600 underline block">General WAEC Resources</a>
+        <a href="https://myschoolgist.com/ng/waec-lit-in-english-past-questions/" target="_blank" class="text-blue-600 underline block">📖 Literature in English</a>
+        <a href="https://myschoolgist.com/ng/waec-maths-past-questions/" target="_blank" class="text-blue-600 underline block">🔢 Mathematics</a>
+      </div>
 
-        <!-- WAEC -->
-        <div class="bg-gray-50 p-6 rounded-lg shadow hover:shadow-md transition">
-          <h4 class="text-xl font-semibold mb-3 text-yellow-600">WAEC Past Questions</h4>
-          <a href="https://myschool.ng/classroom/waec" target="_blank" class="text-blue-600 underline block">📘 General WAEC</a>
-          <a href="https://myschool.ng/classroom/waec/literature-in-english" target="_blank" class="text-blue-600 underline block">📖 Literature in English</a>
-          <a href="https://myschool.ng/classroom/waec/government" target="_blank" class="text-blue-600 underline block">🏛️ Government</a>
-          <a href="https://myschool.ng/classroom/waec/economics" target="_blank" class="text-blue-600 underline block">💹 Economics</a>
-          <a href="https://myschool.ng/classroom/waec/mathematics" target="_blank" class="text-blue-600 underline block">🔢 Mathematics</a>
-          <a href="https://myschool.ng/classroom/waec/physics" target="_blank" class="text-blue-600 underline block">⚡ Physics</a>
-          <a href="https://myschool.ng/classroom/waec/chemistry" target="_blank" class="text-blue-600 underline block">🧪 Chemistry</a>
-          <a href="https://myschool.ng/classroom/waec/biology" target="_blank" class="text-blue-600 underline block">🧬 Biology</a>
+      <!-- NECO -->
+      <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
+        <h4 class="text-xl font-semibold mb-3 gold-gradient">NECO Past Questions</h4>
+        <a href="https://www.schoolngr.com/classroom/neco" target="_blank" class="text-blue-600 underline block">General NECO Resources</a>
+        <a href="https://classhall.com/neco-ssce/history/" target="_blank" class="text-blue-600 underline block">📜 History</a>
+        <a href="https://classhall.com/neco-ssce/mathematics/" target="_blank" class="text-blue-600 underline block">🔢 Mathematics</a>
+      </div>
+
+      <!-- JAMB -->
+      <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
+        <h4 class="text-xl font-semibold mb-3 gold-gradient">JAMB Past Questions</h4>
+        <a href="https://www.jambite.com/free-past-question/jamb" target="_blank" class="text-blue-600 underline block">General JAMB Resources</a>
+        <a href="https://www.jambite.com/free-past-question/jamb-use-of-english" target="_blank" class="text-blue-600 underline block">📝 Use of English</a>
+        <a href="https://www.jambite.com/free-past-question/jamb-mathematics" target="_blank" class="text-blue-600 underline block">🔢 Mathematics</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Schools -->
+  <section id="schools" class="bg-gray-100 py-12">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-2 gold-gradient"><i class="fas fa-school mr-2"></i>Schools in Jama’are</h2>
+      <p class="text-center text-gray-600 mb-8">Highlighting important schools serving the Jama’are community.</p>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-white rounded-lg shadow overflow-hidden">
+          <div class="p-4">
+            <h4 class="font-bold">Government Day Secondary School Jama’are</h4>
+            <p class="text-sm">One of the largest secondary schools in Jama’are.</p>
+          </div>
         </div>
-
-        <!-- NECO -->
-        <div class="bg-gray-50 p-6 rounded-lg shadow hover:shadow-md transition">
-          <h4 class="text-xl font-semibold mb-3 text-yellow-600">NECO Past Questions</h4>
-          <a href="https://myschool.ng/classroom/neco" target="_blank" class="text-blue-600 underline block">📘 General NECO</a>
-          <a href="https://myschool.ng/classroom/neco/history" target="_blank" class="text-blue-600 underline block">📜 History</a>
-          <a href="https://myschool.ng/classroom/neco/civic-education" target="_blank" class="text-blue-600 underline block">🧑‍🤝‍🧑 Civic Education</a>
-          <a href="https://myschool.ng/classroom/neco/mathematics" target="_blank" class="text-blue-600 underline block">🔢 Mathematics</a>
-          <a href="https://myschool.ng/classroom/neco/physics" target="_blank" class="text-blue-600 underline block">⚡ Physics</a>
-          <a href="https://myschool.ng/classroom/neco/chemistry" target="_blank" class="text-blue-600 underline block">🧪 Chemistry</a>
-          <a href="https://myschool.ng/classroom/neco/biology" target="_blank" class="text-blue-600 underline block">🧬 Biology</a>
+        <div class="bg-white rounded-lg shadow overflow-hidden">
+          <div class="p-4">
+            <h4 class="font-bold">Federal Government College Jama’are</h4>
+            <p class="text-sm">A top federal unity school in the area.</p>
+          </div>
         </div>
+      </div>
+    </div>
+  </section>
 
-        <!-- JAMB -->
-        <div class="bg-gray-50 p-6 rounded-lg shadow hover:shadow-md transition">
-          <h4 class="text-xl font-semibold mb-3 text-yellow-600">JAMB Past Questions</h4>
-          <a href="https://myschool.ng/classroom/jamb" target="_blank" class="text-blue-600 underline block">📘 General JAMB</a>
-          <a href="https://myschool.ng/classroom/jamb/use-of-english" target="_blank" class="text-blue-600 underline block">📝 Use of English</a>
-          <a href="https://myschool.ng/classroom/jamb/government" target="_blank" class="text-blue-600 underline block">🏛️ Government</a>
-          <a href="https://myschool.ng/classroom/jamb/economics" target="_blank" class="text-blue-600 underline block">💹 Economics</a>
-          <a href="https://myschool.ng/classroom/jamb/mathematics" target="_blank" class="text-blue-600 underline block">🔢 Mathematics</a>
-          <a href="https://myschool.ng/classroom/jamb/physics" target="_blank" class="text-blue-600 underline block">⚡ Physics</a>
-          <a href="https://myschool.ng/classroom/jamb/chemistry" target="_blank" class="text-blue-600 underline block">🧪 Chemistry</a>
-          <a href="https://myschool.ng/classroom/jamb/biology" target="_blank" class="text-blue-600 underline block">🧬 Biology</a>
+  <!-- Hospitals -->
+  <section id="hospitals" class="py-12">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-2 gold-gradient"><i class="fas fa-hospital mr-2"></i>Hospitals in Jama’are</h2>
+      <p class="text-center text-gray-600 mb-8">Accessing healthcare facilities that support the people of Jama’are.</p>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="bg-white rounded-lg shadow overflow-hidden p-4">
+          <h4 class="font-bold">General Hospital Jama’are</h4>
+          <a href="https://maps.google.com?q=General+Hospital+Jama'are" target="_blank" class="text-blue-600 underline">📍 View on Google Maps</a>
         </div>
+        <div class="bg-white rounded-lg shadow overflow-hidden p-4">
+          <h4 class="font-bold">Primary Health Care Centre Jama’are</h4>
+          <a href="https://maps.google.com?q=PHC+Jama'are" target="_blank" class="text-blue-600 underline">📍 View on Google Maps</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- NEPA -->
+  <section id="nepa" class="bg-gray-100 py-12">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-2 gold-gradient"><i class="fas fa-bolt mr-2"></i>NEPA / Electricity Office</h2>
+      <p class="text-center text-gray-600 mb-8">Ensuring power access for homes, schools, and businesses in Jama’are.</p>
+      <div class="bg-white p-6 rounded-lg shadow text-center">
+        <h4 class="font-bold">NEPA Office Jama’are</h4>
+        <p class="text-sm mb-2">Located at Jama’are Town Centre.</p>
+        <a href="https://maps.google.com?q=NEPA+Office+Jama'are" target="_blank" class="text-blue-600 underline">📍 View on Google Maps</a>
       </div>
     </div>
   </section>
 
   <!-- Contact -->
-  <section id="contact" class="max-w-7xl mx-auto px-6 py-12">
-    <div class="section-card bg-white p-8 rounded-xl shadow-lg">
-      <h3 class="text-3xl font-bold gold-gradient mb-4 flex items-center">
-        <i class="fas fa-envelope mr-3 text-yellow-600"></i> Contact Us
-      </h3>
-      <p class="mb-4">For more information, partnership, or contribution to Jama'are Development Project, reach out below:</p>
-      <form action="https://formspree.io/f/mrbakllz" method="POST" class="space-y-4">
-        <input type="text" name="name" placeholder="Your Name" class="w-full p-3 border rounded-lg focus:ring focus:ring-yellow-400" required>
-        <input type="email" name="email" placeholder="Your Email" class="w-full p-3 border rounded-lg focus:ring focus:ring-yellow-400" required>
-        <textarea name="message" placeholder="Your Message" rows="5" class="w-full p-3 border rounded-lg focus:ring focus:ring-yellow-400" required></textarea>
-        <button type="submit" class="w-full bg-yellow-600 text-white py-3 rounded-lg hover:bg-yellow-700 transition">Send Message</button>
+  <section id="contact" class="py-12">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-2 gold-gradient"><i class="fas fa-envelope mr-2"></i>Contact Us</h2>
+      <p class="text-center text-gray-600 mb-8">Have suggestions? Use the form below to share your ideas for improving Jama’are Hub.</p>
+      <form action="https://formspree.io/f/mrbakllz" method="POST" class="max-w-xl mx-auto bg-white p-6 rounded-lg shadow">
+        <input type="text" name="name" placeholder="Your Name" class="w-full p-3 mb-4 border rounded" required>
+        <input type="email" name="email" placeholder="Your Email" class="w-full p-3 mb-4 border rounded" required>
+        <textarea name="message" rows="5" placeholder="Your Message" class="w-full p-3 mb-4 border rounded" required></textarea>
+        <button type="submit" class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600">Send</button>
       </form>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-gray-900 text-gray-300 py-6 text-center">
-    <p>&copy; 2025 Jama'are Development Project. All Rights Reserved.</p>
+  <footer class="bg-gray-900 text-white text-center py-4 mt-8">
+    <p>Made for Jama’are Community – 2025</p>
   </footer>
 
 </body>
