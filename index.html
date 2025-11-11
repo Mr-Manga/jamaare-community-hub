@@ -1,20 +1,35 @@
-<!DOCTYPE html>
+<!--
+Project: Jama'are Community Hub - All-in-One (single repo bundle)
+Files included in this document (copy each to separate files when you deploy):
+
+1) index.html           -> Main frontend (HTML + Tailwind + scripts)
+2) service-worker.js    -> Service worker for PWA offline caching
+3) manifest.json        -> Web app manifest
+4) firebase-config.js   -> Placeholder for Firebase client config (optional)
+
+Notes before using:
+- Replace FIREBASE_CONFIG in firebase-config.js with your Firebase project's config if you want uploads & Firestore functionality.
+- Replace PAYSTACK_PUBLIC_KEY in index.html with your Paystack test/public key to enable test donations.
+- If you want AI features with OpenAI, paste your API key into the openAIKey variable or implement server-side proxy for security.
+- When deploying, serve files from a proper host (Netlify, Vercel, Firebase Hosting, or GitHub Pages). For PWAs and service workers, use HTTPS (GitHub Pages/Netlify provide HTTPS for you).
+
+-----------------------------------------------------------------------------
+File: index.html
+----------------------------------------------------------------------------->
+
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jama'are Community Hub</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jama'are Community Hub — All-in-One</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="manifest" href="manifest.json" />
   <meta name="theme-color" content="#d4af37" />
+  <link rel="manifest" href="/manifest.json" />
   <style>
     body { font-family: 'Poppins', sans-serif; }
-    .gold-gradient {
-      background: linear-gradient(90deg, #d4af37, #f1c40f);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+    .gold-gradient { background: linear-gradient(90deg,#d4af37,#f1c40f); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
   </style>
 </head>
 <body class="bg-gray-50 text-gray-900">
@@ -30,376 +45,463 @@
         <a href="#education" class="hover:text-yellow-400">Education</a>
         <a href="#schools" class="hover:text-yellow-400">Schools</a>
         <a href="#hospitals" class="hover:text-yellow-400">Hospitals</a>
-        <a href="#nepa" class="hover:text-yellow-400">NEPA</a>
+        <a href="#quiz" class="hover:text-yellow-400">Quiz</a>
         <a href="#contact" class="hover:text-yellow-400">Contact</a>
       </div>
+      <div class="md:hidden">
+        <button id="menuBtn" class="p-2 focus:outline-none"><i class="fas fa-bars"></i></button>
+      </div>
+    </div>
+    <div id="mobileMenu" class="hidden bg-gray-800 px-4 py-2">
+      <a href="#education" class="block py-1">Education</a>
+      <a href="#schools" class="block py-1">Schools</a>
+      <a href="#hospitals" class="block py-1">Hospitals</a>
+      <a href="#quiz" class="block py-1">Quiz</a>
+      <a href="#contact" class="block py-1">Contact</a>
     </div>
   </nav>
 
   <!-- Hero -->
-  <section class="bg-gradient-to-r from-gray-900 to-gray-700 text-white py-16">
+  <section class="bg-gradient-to-r from-gray-900 to-gray-700 text-white py-12">
     <div class="container mx-auto text-center px-4">
-      <h1 class="text-4xl md:text-5xl font-bold mb-4 gold-gradient">Welcome to Jama'are Community Hub</h1>
-      <p class="text-lg md:text-xl">Building Future through Education, Health, and Public Services for Jama’are Local Government.</p>
+      <h1 class="text-3xl md:text-5xl font-bold mb-2 gold-gradient">Welcome to Jama'are Community Hub</h1>
+      <p class="text-md md:text-lg">Free WAEC / NECO / JAMB past questions, community resources and local services.</p>
+      <div class="mt-6 flex justify-center gap-3">
+        <a href="#education" class="bg-yellow-500 px-4 py-2 rounded text-white hover:bg-yellow-600">Start Learning</a>
+        <a href="#sponsor" class="bg-green-600 px-4 py-2 rounded text-white hover:bg-green-700">Sponsor a Student</a>
+      </div>
     </div>
   </section>
 
-  <!-- Education -->
-<section id="education" class="container mx-auto px-6 py-12">
-  <h2 class="text-3xl font-bold text-center mb-2 gold-gradient"><i class="fas fa-book-open mr-2"></i>Education Resources</h2>
-  <p class="text-center text-gray-600 mb-8">Providing free past questions and resources to help Jama’are students succeed.</p>
-  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+  <!-- Education Resources (dynamic + links) -->
+  <section id="education" class="container mx-auto px-6 py-10">
+    <h2 class="text-2xl md:text-3xl font-bold text-center mb-2 gold-gradient"><i class="fas fa-book-open mr-2"></i>Education Resources</h2>
+    <p class="text-center text-gray-600 mb-6">Access curated links, community uploads, and a study assistant.</p>
 
-    <!-- WAEC -->
-    <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
-      <h4 class="text-xl font-semibold mb-3 gold-gradient">WAEC Past Questions</h4>
-      <a href="https://myschoolgist.com/ng/free-waec-past-questions-and-answers/" target="_blank" class="text-blue-600 underline block">📘 General WAEC Resources</a>
-      <a href="https://myschoolgist.com/ng/waec-lit-in-english-past-questions/" target="_blank" class="text-blue-600 underline block">📖 Literature in English</a>
-      <a href="https://myschoolgist.com/ng/waec-maths-past-questions/" target="_blank" class="text-blue-600 underline block">🔢 Mathematics</a>
-      <a href="https://myschoolgist.com/ng/waec-history-past-questions/" target="_blank" class="text-blue-600 underline block">📜 History</a>
-      <a href="https://myschoolgist.com/ng/waec-government-past-questions/" target="_blank" class="text-blue-600 underline block">🏛️ Government</a>
-      <a href="https://myschoolgist.com/ng/waec-economics-past-questions/" target="_blank" class="text-blue-600 underline block">💹 Economics</a>
-      <a href="https://myschoolgist.com/ng/waec-crs-past-questions/" target="_blank" class="text-blue-600 underline block">✝️ CRS</a>
-      <a href="https://myschool.ng/classroom/islamic-religious-knowledge-irk" target="_blank" class="text-blue-600 underline block">☪️ Islamic Studies (IRK/IRS)</a>
+    <div class="flex flex-col md:flex-row gap-6">
+      <!-- Links -->
+      <div class="flex-1 bg-white p-6 rounded-lg shadow">
+        <h3 class="font-semibold mb-3">Past Questions & Links</h3>
+        <div class="grid md:grid-cols-2 gap-3">
+          <a href="https://myschoolgist.com/ng/free-waec-past-questions-and-answers/" target="_blank" class="text-blue-600 underline">WAEC Resources</a>
+          <a href="https://classhall.com/neco-ssce/" target="_blank" class="text-blue-600 underline">NECO Resources</a>
+          <a href="https://myschool.ng/classroom?exam_type=jamb" target="_blank" class="text-blue-600 underline">JAMB Resources</a>
+          <a href="https://open.umn.edu/opentextbooks" target="_blank" class="text-blue-600 underline">Open Textbooks</a>
+        </div>
+
+        <hr class="my-4">
+        <h4 class="font-semibold">Community Uploads</h4>
+        <p class="text-sm text-gray-600 mb-2">Share notes, past questions or guides (files are stored in Firebase storage — optional).</p>
+        <form id="uploadForm" class="space-y-3">
+          <input id="uploaderName" type="text" placeholder="Your name" class="w-full p-3 border rounded" required />
+          <input id="fileInput" type="file" class="w-full p-2" />
+          <button id="uploadBtn" type="button" class="bg-yellow-500 px-4 py-2 rounded text-white">Upload (optional)</button>
+          <p id="uploadStatus" class="text-sm text-gray-600"></p>
+        </form>
+        <div id="communityList" class="mt-4"></div>
+      </div>
+
+      <!-- AI Assistant + Quick Quizzes -->
+      <div class="w-full md:w-96 bg-white p-6 rounded-lg shadow">
+        <h3 class="font-semibold mb-3">Study Assistant (local / API)</h3>
+        <p class="text-sm text-gray-600 mb-2">Ask a question or pick a quick tip.</p>
+        <textarea id="aiQuestion" class="w-full p-2 border rounded mb-2" rows="3" placeholder="Explain this question... (e.g. 2019 WAEC math question)"></textarea>
+        <div class="flex gap-2">
+          <button id="askBtn" class="bg-blue-600 text-white px-3 py-2 rounded">Ask</button>
+          <button id="hintBtn" class="bg-gray-200 px-3 py-2 rounded">Example Q</button>
+        </div>
+        <div id="aiAnswer" class="mt-3 text-gray-700"></div>
+
+        <hr class="my-4">
+        <h4 class="font-semibold">Quick Quizzes</h4>
+        <div id="quizArea" class="mt-2"></div>
+      </div>
     </div>
+  </section>
 
-    <!-- NECO -->
-    <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
-      <h4 class="text-xl font-semibold mb-3 gold-gradient">NECO Past Questions</h4>
-      <a href="https://www.schoolngr.com/classroom/neco" target="_blank" class="text-blue-600 underline block">📘 General NECO Resources</a>
-      <a href="https://classhall.com/neco-ssce/history/" target="_blank" class="text-blue-600 underline block">📜 History</a>
-      <a href="https://classhall.com/neco-ssce/mathematics/" target="_blank" class="text-blue-600 underline block">🔢 Mathematics</a>
-      <a href="https://classhall.com/neco-ssce/literature-in-english/" target="_blank" class="text-blue-600 underline block">📖 Literature in English</a>
-      <a href="https://classhall.com/neco-ssce/economics/" target="_blank" class="text-blue-600 underline block">💹 Economics</a>
-      <a href="https://classhall.com/neco-ssce/government/" target="_blank" class="text-blue-600 underline block">🏛️ Government</a>
-      <a href="https://classhall.com/neco-ssce/crs/" target="_blank" class="text-blue-600 underline block">✝️ CRS</a>
-      <a href="https://myschool.ng/classroom/islamic-religious-knowledge-irk" target="_blank" class="text-blue-600 underline block">☪️ Islamic Studies (IRK/IRS)</a>
+  <!-- Schools & Services Section -->
+  <section id="schools" class="bg-gray-100 py-10">
+    <div class="container mx-auto px-6">
+      <h2 class="text-xl md:text-3xl font-bold text-center mb-2 gold-gradient"><i class="fas fa-school mr-2"></i>Important Schools</h2>
+      <p class="text-center text-gray-600 mb-6">Local schools and contact links.</p>
+      <div class="grid md:grid-cols-3 gap-4">
+        <!-- sample card -->
+        <div class="bg-white p-4 rounded shadow">
+          <h4 class="font-bold">Federal College of Education, Jama'are</h4>
+          <p class="text-sm">A leading tertiary institution.</p>
+        </div>
+        <div class="bg-white p-4 rounded shadow">
+          <h4 class="font-bold">Government Secondary School, Jama'are</h4>
+          <p class="text-sm">Secondary education.</p>
+        </div>
+        <div class="bg-white p-4 rounded shadow">
+          <h4 class="font-bold">Government Arabic College, Jama'are</h4>
+          <p class="text-sm">Arabic & Islamic studies.</p>
+        </div>
+      </div>
     </div>
-
-    <!-- JAMB (Myschool only) -->
-    <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
-      <h4 class="text-xl font-semibold mb-3 gold-gradient">JAMB Past Questions</h4>
-      <a href="https://myschool.ng/classroom/english-language?exam_type=jamb" target="_blank" class="text-blue-600 underline block">📖 English Language</a>
-      <a href="https://myschool.ng/classroom/mathematics?exam_type=jamb" target="_blank" class="text-blue-600 underline block">🔢 Mathematics</a>
-      <a href="https://myschool.ng/classroom/biology?exam_type=jamb" target="_blank" class="text-blue-600 underline block">🧬 Biology</a>
-      <a href="https://myschool.ng/classroom/physics?exam_type=jamb" target="_blank" class="text-blue-600 underline block">🔭 Physics</a>
-      <a href="https://myschool.ng/classroom/chemistry?exam_type=jamb" target="_blank" class="text-blue-600 underline block">⚗️ Chemistry</a>
-      <a href="https://myschool.ng/classroom/government?exam_type=jamb" target="_blank" class="text-blue-600 underline block">🏛️ Government</a>
-      <a href="https://myschool.ng/classroom/islamic-religious-knowledge-irk?exam_type=jamb" target="_blank" class="text-blue-600 underline block">☪️ Islamic Studies (IRK)</a>
-    </div>
-
-  </div>
-</section>
-
-  <!-- Schools -->
-<section id="schools" class="bg-gray-100 py-12">
-  <div class="container mx-auto px-6">
-    <h2 class="text-3xl font-bold text-center mb-2 gold-gradient">
-      <i class="fas fa-school mr-2"></i>Schools in Jama’are
-    </h2>
-    <p class="text-center text-gray-600 mb-8">
-      Highlighting important schools serving the Jama’are community.
-    </p>
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-      <!-- Higher Institution -->
-      <div class="bg-white rounded-lg shadow overflow-hidden">
-        <div class="p-4">
-          <h4 class="font-bold">Federal College of Education, Jama’are</h4>
-          <p class="text-sm">A leading tertiary institution in Jama’are. 
-            <a href="https://www.fcejamaare.edu.ng" target="_blank" class="text-blue-600">Visit Website</a>
-          </p>
-        </div>
-      </div>
-
-      <!-- Secondary / Upper Basic -->
-      <div class="bg-white rounded-lg shadow overflow-hidden">
-        <div class="p-4">
-          <h4 class="font-bold">Government Secondary School, Jama’are</h4>
-          <p class="text-sm">One of the oldest and most recognized schools in the area.</p>
-        </div>
-      </div>
-      <div class="bg-white rounded-lg shadow overflow-hidden">
-        <div class="p-4">
-          <h4 class="font-bold">Government Arabic College, Jama’are</h4>
-          <p class="text-sm">A major Arabic and Islamic studies institution in Jama’are.</p>
-        </div>
-      </div>
-      <div class="bg-white rounded-lg shadow overflow-hidden">
-        <div class="p-4">
-          <h4 class="font-bold">Hassan Muhammad Senior Secondary School, Jama’are</h4>
-          <p class="text-sm">Provides senior secondary education to Jama’are students.</p>
-        </div>
-      </div>
-      <div class="bg-white rounded-lg shadow overflow-hidden">
-        <div class="p-4">
-          <h4 class="font-bold">JIBWIS Science Secondary School, Jama’are</h4>
-          <p class="text-sm">Focuses on science and Islamic education.</p>
-        </div>
-      </div>
-      <div class="bg-white rounded-lg shadow overflow-hidden">
-        <div class="p-4">
-          <h4 class="font-bold">Junior Secondary School Ahmad Muhammad Wabi III Upper Basic</h4>
-          <p class="text-sm">Upper basic school serving the Jama’are community.</p>
-        </div>
-      </div>
-
-      <!-- Primary Schools -->
-      <div class="bg-white rounded-lg shadow overflow-hidden">
-        <div class="p-4">
-          <h4 class="font-bold">Abdulkadir Ahmed Primary School, Jama’are</h4>
-          <p class="text-sm">A well-known primary school for early education.</p>
-        </div>
-      </div>
-      <div class="bg-white rounded-lg shadow overflow-hidden">
-        <div class="p-4">
-          <h4 class="font-bold">Yangamai Primary School</h4>
-          <p class="text-sm">A key primary school serving children in Jama’are.</p>
-        </div>
-      </div>
-      <div class="bg-white rounded-lg shadow overflow-hidden">
-        <div class="p-4">
-          <h4 class="font-bold">Wabi Academy, Jama’are</h4>
-          <p class="text-sm">Provides primary education and other levels of learning.</p>
-        </div>
-      </div>
-      <div class="bg-white rounded-lg shadow overflow-hidden">
-        <div class="p-4">
-          <h4 class="font-bold">Central Primary School, Jama’are</h4>
-          <p class="text-sm">One of the central schools providing foundational education in Jama’are.</p>
-        </div>
-      </div>
-      <div class="bg-white rounded-lg shadow overflow-hidden">
-        <div class="p-4">
-          <h4 class="font-bold">Kyawawa Primary School, Jama’are</h4>
-          <p class="text-sm">A primary school dedicated to serving the Kyawawa community in Jama’are.</p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-
+  </section>
 
   <!-- Hospitals -->
-
-
-<section id="hospitals" class="py-12">
-  <div class="container mx-auto px-6">
-    <h2 class="text-3xl font-bold text-center mb-2 gold-gradient">
-      <i class="fas fa-hospital mr-2"></i>Hospitals in Jama’are
-    </h2>
-    <p class="text-center text-gray-600 mb-8">
-      Accessing healthcare facilities that support the people of Jama’are.
-    </p>
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-      <!-- Hospital -->
-      <div class="bg-white rounded-lg shadow overflow-hidden p-4">
-        <h4 class="font-bold">General Hospital Jama’are</h4>
-        <a href="https://maps.google.com?q=General+Hospital+Jama'are" target="_blank" class="text-blue-600 underline">📍 View on Google Maps</a>
+  <section id="hospitals" class="py-10 container mx-auto px-6">
+    <h2 class="text-xl md:text-3xl font-bold text-center mb-2 gold-gradient"><i class="fas fa-hospital mr-2"></i>Healthcare</h2>
+    <p class="text-center text-gray-600 mb-6">Local clinics and PHCs.</p>
+    <div class="grid md:grid-cols-3 gap-4">
+      <div class="bg-white p-4 rounded shadow">
+        <h4 class="font-bold">General Hospital Jama'are</h4>
+        <a class="text-blue-600 underline" href="https://maps.google.com?q=General+Hospital+Jama'are" target="_blank">View on Google Maps</a>
       </div>
-
-      <!-- Primary Health Care -->
-      <div class="bg-white rounded-lg shadow overflow-hidden p-4">
-        <h4 class="font-bold">Primary Health Care Centre Jama’are</h4>
-        <a href="https://maps.google.com?q=PHC+Jama'are" target="_blank" class="text-blue-600 underline">📍 View on Google Maps</a>
+      <div class="bg-white p-4 rounded shadow">
+        <h4 class="font-bold">Primary Health Care Centre Jama'are</h4>
       </div>
-
-      <!-- Clinics & Maternity -->
-      <div class="bg-white rounded-lg shadow overflow-hidden p-4">
-        <h4 class="font-bold">Yahaya Clinic and Maternity Home</h4>
-        <a href="https://maps.google.com?q=Yahaya+Clinic+Jama'are" target="_blank" class="text-blue-600 underline">📍 View on Google Maps</a>
+      <div class="bg-white p-4 rounded shadow">
+        <h4 class="font-bold">Yahaya Clinic & Maternity Home</h4>
       </div>
-      <div class="bg-white rounded-lg shadow overflow-hidden p-4">
-        <h4 class="font-bold">Nasara Clinic and Maternity Home</h4>
-        <a href="https://maps.google.com?q=Nasara+Clinic+Jama'are" target="_blank" class="text-blue-600 underline">📍 View on Google Maps</a>
-      </div>
-      <div class="bg-white rounded-lg shadow overflow-hidden p-4">
-        <h4 class="font-bold">Amana Clinic and Maternity Home</h4>
-        <a href="https://maps.google.com?q=Amana+Clinic+Jama'are" target="_blank" class="text-blue-600 underline">📍 View on Google Maps</a>
-      </div>
-
-      <!-- More Primary Health Centres -->
-      <div class="bg-white rounded-lg shadow overflow-hidden p-4">
-        <h4 class="font-bold">Jama’are Town Primary Health Center</h4>
-        <a href="https://maps.google.com?q=Jamaare+Town+PHC" target="_blank" class="text-blue-600 underline">📍 View on Google Maps</a>
-      </div>
-      <div class="bg-white rounded-lg shadow overflow-hidden p-4">
-        <h4 class="font-bold">Marmanji Primary Health Clinic</h4>
-        <a href="https://maps.google.com?q=Marmanji+PHC+Jama'are" target="_blank" class="text-blue-600 underline">📍 View on Google Maps</a>
-      </div>
-      <div class="bg-white rounded-lg shadow overflow-hidden p-4">
-        <h4 class="font-bold">Yangamai Primary Healthcare Centre</h4>
-        <a href="https://maps.google.com?q=Yangamai+PHC+Jama'are" target="_blank" class="text-blue-600 underline">📍 View on Google Maps</a>
-      </div>
-      <div class="bg-white rounded-lg shadow overflow-hidden p-4">
-        <h4 class="font-bold">Abuja Primary Health Center</h4>
-        <a href="https://maps.google.com?q=Abuja+PHC+Jama'are" target="_blank" class="text-blue-600 underline">📍 View on Google Maps</a>
-      </div>
-      <div class="bg-white rounded-lg shadow overflow-hidden p-4">
-        <h4 class="font-bold">Hanafari Model Primary Health Centre</h4>
-        <a href="https://maps.google.com?q=Hanafari+Model+PHC+Jama'are" target="_blank" class="text-blue-600 underline">📍 View on Google Maps</a>
-      </div>
-      <div class="bg-white rounded-lg shadow overflow-hidden p-4">
-        <h4 class="font-bold">Changamawa Primary Health Centre</h4>
-        <a href="https://maps.google.com?q=Changamawa+PHC+Jama'are" target="_blank" class="text-blue-600 underline">📍 View on Google Maps</a>
-      </div>
-      <div class="bg-white rounded-lg shadow overflow-hidden p-4">
-        <h4 class="font-bold">Majabun Primary Health Clinic</h4>
-        <a href="https://maps.google.com?q=Majabun+Clinic+Jama'are" target="_blank" class="text-blue-600 underline">📍 View on Google Maps</a>
-      </div>
-      <div class="bg-white rounded-lg shadow overflow-hidden p-4">
-        <h4 class="font-bold">Under Five Primary Health Centre</h4>
-        <a href="https://maps.google.com?q=Under+Five+PHC+Jama'are" target="_blank" class="text-blue-600 underline">📍 View on Google Maps</a>
-      </div>
-      <div class="bg-white rounded-lg shadow overflow-hidden p-4">
-        <h4 class="font-bold">Nasarawa Primary Health Centre</h4>
-        <a href="https://maps.google.com?q=Nasarawa+PHC+Jama'are" target="_blank" class="text-blue-600 underline">📍 View on Google Maps</a>
-      </div>
-      <div class="bg-white rounded-lg shadow overflow-hidden p-4">
-        <h4 class="font-bold">Gongo Primary Health Centre</h4>
-        <a href="https://maps.google.com?q=Gongo+PHC+Jama'are" target="_blank" class="text-blue-600 underline">📍 View on Google Maps</a>
-      </div>
-      <div class="bg-white rounded-lg shadow overflow-hidden p-4">
-        <h4 class="font-bold">Dogon Jeji Primary Health Centre</h4>
-        <a href="https://maps.google.com?q=Dogon+Jeji+PHC+Jama'are" target="_blank" class="text-blue-600 underline">📍 View on Google Maps</a>
-      </div>
-
-      <!-- Health Posts -->
-      <div class="bg-white rounded-lg shadow overflow-hidden p-4">
-        <h4 class="font-bold">Baburti Health Post</h4>
-        <a href="https://maps.google.com?q=Baburti+Health+Post+Jama'are" target="_blank" class="text-blue-600 underline">📍 View on Google Maps</a>
-      </div>
-      <div class="bg-white rounded-lg shadow overflow-hidden p-4">
-        <h4 class="font-bold">Sharaba Health Post</h4>
-        <a href="https://maps.google.com?q=Sharaba+Health+Post+Jama'are" target="_blank" class="text-blue-600 underline">📍 View on Google Maps</a>
-      </div>
-
     </div>
-  </div>
-</section>
+  </section>
 
-
-<!-- =======================
-   📚 EDUCATIONAL RESOURCES
-   ======================= -->
-<section id="quiz" class="bg-gray-100 py-12">
-  <div class="container mx-auto px-6">
-    <h2 class="text-3xl font-bold text-center mb-2 gold-gradient"><i class="fas fa-puzzle-piece mr-2"></i>Spelling Bee & Quiz</h2>
-    <p class="text-center text-gray-600 mb-8">Test your knowledge with fun and interactive quizzes.</p>
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-      
-      <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
-        <h4 class="text-xl font-semibold mb-3">English Spelling Bee</h4>
-        <a href="https://www.spellingtraining.com/" target="_blank" class="text-blue-600 underline">🎯 Practice Spelling</a>
-      </div>
-      
-      <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
-        <h4 class="text-xl font-semibold mb-3">Mathematics Quiz</h4>
-        <a href="https://www.prodigygame.com/main-en/" target="_blank" class="text-blue-600 underline">➕ Try Math Challenges</a>
-      </div>
-      
-      <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
-        <h4 class="text-xl font-semibold mb-3">Islamic Quiz</h4>
-        <a href="https://islamicquiz.org/" target="_blank" class="text-blue-600 underline">☪️ Take Islamic Quiz</a>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-
-<!-- =======================
-   ☪️ ISLAMIC LEARNING
-   ======================= -->
-<section id="islamic" class="py-12">
-  <div class="container mx-auto px-6">
-    <h2 class="text-3xl font-bold text-center mb-2 gold-gradient"><i class="fas fa-mosque mr-2"></i>Islamic Learning</h2>
-    <p class="text-center text-gray-600 mb-8">Enhance your knowledge of Islam with trusted resources.</p>
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-      <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
-        <h4 class="text-xl font-semibold mb-3">Read Qur’an</h4>
-        <a href="https://quran.com/" target="_blank" class="text-blue-600 underline">📖 Open Qur’an Online</a>
-      </div>
-
-      <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
-        <h4 class="text-xl font-semibold mb-3">Hadith Collection</h4>
-        <a href="https://sunnah.com/" target="_blank" class="text-blue-600 underline">📚 Explore Hadith</a>
-      </div>
-
-      <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
-        <h4 class="text-xl font-semibold mb-3">Islamic Q&A</h4>
-        <a href="https://islamqa.info/en" target="_blank" class="text-blue-600 underline">☪️ Learn More</a>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-
-<!-- =======================
-   📖 e-LIBRARY
-   ======================= -->
-<section id="library" class="bg-gray-100 py-12">
-  <div class="container mx-auto px-6">
-    <h2 class="text-3xl font-bold text-center mb-2 gold-gradient"><i class="fas fa-book mr-2"></i>e-Library & Study Materials</h2>
-    <p class="text-center text-gray-600 mb-8">Free textbooks, past questions, and learning resources for all students.</p>
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-      <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
-        <h4 class="text-xl font-semibold mb-3">Download JAMB Past Questions</h4>
-        <a href="https://www.jambite.com/free-past-question/jamb" target="_blank" class="text-blue-600 underline">📘 Access JAMB Library</a>
-      </div>
-
-      <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
-        <h4 class="text-xl font-semibold mb-3">WAEC/NECO Resources</h4>
-        <a href="https://myschool.ng/classroom" target="_blank" class="text-blue-600 underline">📖 Access WAEC/NECO Materials</a>
-      </div>
-
-      <div class="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
-        <h4 class="text-xl font-semibold mb-3">Free Textbooks</h4>
-        <a href="https://open.umn.edu/opentextbooks" target="_blank" class="text-blue-600 underline">📚 Browse Free Textbooks</a>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-
-  <!-- NEPA -->
-  <section id="nepa" class="bg-gray-100 py-12">
+  <!-- Sponsor / Charity Section -->
+  <section id="sponsor" class="bg-white py-10">
     <div class="container mx-auto px-6">
-      <h2 class="text-3xl font-bold text-center mb-2 gold-gradient"><i class="fas fa-bolt mr-2"></i>NEPA / Electricity Office</h2>
-      <p class="text-center text-gray-600 mb-8">Ensuring power access for homes, schools, and businesses in Jama’are.</p>
-      <div class="bg-white p-6 rounded-lg shadow text-center">
-        <h4 class="font-bold">NEPA Office Jama’are</h4>
-        <p class="text-sm mb-2">Located at Jama’are Town Centre.</p>
-        <a href="https://maps.google.com?q=NEPA+Office+Jama'are" target="_blank" class="text-blue-600 underline">📍 View on Google Maps</a>
+      <h2 class="text-2xl md:text-3xl font-bold text-center mb-4 gold-gradient"><i class="fas fa-hands-helping mr-2"></i>Sponsor a Student</h2>
+      <p class="text-center text-gray-600 mb-6">Donate to help students pay exam fees or buy textbooks. (Test payments)</p>
+
+      <div class="grid md:grid-cols-3 gap-4" id="sponsorList">
+        <!-- Example sponsor card (replace with dynamic list from Firestore if configured) -->
+        <div class="bg-gray-50 p-4 rounded shadow">
+          <h3 class="font-semibold">Aisha, SS3</h3>
+          <p class="text-sm">Needs ₦5,000 for WAEC registration.</p>
+          <div class="mt-3 flex gap-2">
+            <button class="sponsorBtn bg-green-600 text-white px-3 py-2 rounded" data-name="Aisha" data-amount="5000">Sponsor ₦5,000</button>
+            <button class="sponsorBtn bg-yellow-500 text-white px-3 py-2 rounded" data-name="Aisha" data-amount="2000">Sponsor ₦2,000</button>
+          </div>
+        </div>
+      </div>
+
+      <p class="text-sm text-gray-600 mt-4">Note: This demo uses Paystack test integration. Replace with your key to accept test payments.</p>
+    </div>
+  </section>
+
+  <!-- Quiz / Library -->
+  <section id="quiz" class="bg-gray-100 py-10">
+    <div class="container mx-auto px-6">
+      <h2 class="text-2xl md:text-3xl font-bold text-center mb-4 gold-gradient">Quizzes & e-Library</h2>
+      <div class="grid md:grid-cols-3 gap-4">
+        <div class="bg-white p-4 rounded shadow">
+          <h4 class="font-semibold">Spelling Bee Practice</h4>
+          <a href="https://www.spellingtraining.com/" target="_blank" class="text-blue-600 underline">Practice</a>
+        </div>
+        <div class="bg-white p-4 rounded shadow">
+          <h4 class="font-semibold">Mathematics Challenges</h4>
+          <a href="https://www.prodigygame.com/main-en/" target="_blank" class="text-blue-600 underline">Try</a>
+        </div>
+        <div class="bg-white p-4 rounded shadow">
+          <h4 class="font-semibold">Free Textbooks</h4>
+          <a href="https://open.umn.edu/opentextbooks" target="_blank" class="text-blue-600 underline">Browse</a>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Contact -->
-  <section id="contact" class="py-12">
+  <section id="contact" class="py-10">
     <div class="container mx-auto px-6">
-      <h2 class="text-3xl font-bold text-center mb-2 gold-gradient"><i class="fas fa-envelope mr-2"></i>Contact Us</h2>
-      <p class="text-center text-gray-600 mb-8">Have suggestions? Use the form below to share your ideas for improving Jama’are Hub.</p>
-      <form action="https://formspree.io/f/mrbakllz" method="POST" class="max-w-xl mx-auto bg-white p-6 rounded-lg shadow">
-        <input type="text" name="name" placeholder="Your Name" class="w-full p-3 mb-4 border rounded" required>
-        <input type="email" name="email" placeholder="Your Email" class="w-full p-3 mb-4 border rounded" required>
-        <textarea name="message" rows="5" placeholder="Your Message" class="w-full p-3 mb-4 border rounded" required></textarea>
-        <button type="submit" class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600">Send</button>
+      <h2 class="text-2xl md:text-3xl font-bold text-center mb-4 gold-gradient">Contact & Feedback</h2>
+      <form id="contactForm" class="max-w-xl mx-auto bg-white p-6 rounded shadow space-y-3">
+        <input type="text" id="contactName" placeholder="Your Name" class="w-full p-3 border rounded" required>
+        <input type="email" id="contactEmail" placeholder="Your Email" class="w-full p-3 border rounded" required>
+        <textarea id="contactMessage" rows="4" placeholder="Your Message" class="w-full p-3 border rounded" required></textarea>
+        <div class="flex gap-2 justify-center">
+          <button type="button" id="contactSend" class="bg-yellow-500 px-4 py-2 rounded text-white">Send</button>
+        </div>
+        <p id="contactStatus" class="text-sm text-gray-600"></p>
       </form>
     </div>
   </section>
 
   <!-- Footer -->
   <footer class="bg-gray-900 text-white text-center py-4 mt-8">
-    <p>Made for Jama’are Community – 2025</p>
+    <p>Made for Jama'are Community – 2025 • Built by Manga</p>
   </footer>
+
+  <!-- Scripts: Firebase (optional), Paystack (optional), and custom logic -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-storage-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+
+  <!-- Paystack for demo payments -->
+  <script src="https://js.paystack.co/v1/inline.js"></script>
+
+  <!-- Placeholder: include your firebase-config.js if you want backend features -->
+  <script>
+    // ========== Configuration placeholders ==========
+    // Replace with your actual Paystack public key for test mode
+    const PAYSTACK_PUBLIC_KEY = 'pk_test_YOUR_TEST_KEY';
+
+    // If you want to use Firebase features, create firebase-config.js with your config
+    // Example file should set window.FIREBASE_CONFIG = { apiKey: '...', authDomain: '...', ... }
+    const openAIKey = ''; // Optional: add OpenAI key if you have it (server proxy recommended)
+
+    // Initialize Firebase only when window.FIREBASE_CONFIG is provided
+    let db = null, storage = null;
+    if (window.FIREBASE_CONFIG) {
+      firebase.initializeApp(window.FIREBASE_CONFIG);
+      storage = firebase.storage();
+      db = firebase.firestore();
+      console.log('Firebase initialized');
+    }
+
+    // ========== Mobile menu ==========
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn?.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+
+    // ========== Upload logic (Firebase optional) ==========
+    const uploadBtn = document.getElementById('uploadBtn');
+    const fileInput = document.getElementById('fileInput');
+    const uploaderName = document.getElementById('uploaderName');
+    const uploadStatus = document.getElementById('uploadStatus');
+    const communityList = document.getElementById('communityList');
+
+    uploadBtn?.addEventListener('click', async () => {
+      const file = fileInput.files[0];
+      const name = uploaderName.value || 'Anonymous';
+      if (!file) {
+        uploadStatus.textContent = 'Please choose a file to upload.';
+        return;
+      }
+      if (!storage) {
+        uploadStatus.textContent = 'Upload feature requires Firebase. Add firebase-config.js with your config.';
+        return;
+      }
+      uploadStatus.textContent = 'Uploading...';
+      try {
+        const ref = storage.ref().child('uploads/' + Date.now() + '_' + file.name);
+        await ref.put(file);
+        const url = await ref.getDownloadURL();
+        await db.collection('uploads').add({ name, filename: file.name, url, createdAt: firebase.firestore.FieldValue.serverTimestamp() });
+        uploadStatus.textContent = 'Upload successful — thank you!';
+        loadCommunityUploads();
+      } catch (e) {
+        console.error(e);
+        uploadStatus.textContent = 'Upload failed. Check console.';
+      }
+    });
+
+    async function loadCommunityUploads() {
+      communityList.innerHTML = '';
+      if (!db) {
+        communityList.innerHTML = '<p class="text-sm text-gray-600">No uploads (Firebase not configured).</p>';
+        return;
+      }
+      const snapshot = await db.collection('uploads').orderBy('createdAt','desc').limit(10).get();
+      snapshot.forEach(doc => {
+        const data = doc.data();
+        const el = document.createElement('div');
+        el.className = 'mb-2 p-2 border rounded';
+        el.innerHTML = `<strong>${escapeHtml(data.name)}</strong> — <a href="${data.url}" target="_blank" class="text-blue-600 underline">${escapeHtml(data.filename)}</a>`;
+        communityList.appendChild(el);
+      });
+    }
+
+    // ========== Sponsor / Paystack demo ==========
+    function payWithPaystack(name, amount) {
+      if (!PAYSTACK_PUBLIC_KEY || PAYSTACK_PUBLIC_KEY.includes('YOUR_TEST_KEY')) {
+        alert('Paystack key is not set. Replace PAYSTACK_PUBLIC_KEY with your test public key to try payments.');
+        return;
+      }
+      const handler = PaystackPop.setup({
+        key: PAYSTACK_PUBLIC_KEY,
+        email: 'donor@example.com',
+        amount: amount * 100, // kobo
+        currency: 'NGN',
+        ref: 'jr_' + Math.floor(Math.random() * 1000000000),
+        metadata: { custom_fields: [{ display_name: 'Sponsor for', variable_name: 'student', value: name }] },
+        callback: function(response) {
+          alert('Payment complete. Reference: ' + response.reference);
+        },
+        onClose: function() {
+          alert('Payment window closed.');
+        }
+      });
+      handler.openIframe();
+    }
+
+    document.querySelectorAll('.sponsorBtn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const name = btn.dataset.name;
+        const amount = parseInt(btn.dataset.amount, 10);
+        payWithPaystack(name, amount);
+      });
+    });
+
+    // ========== Contact form (simple Formspree fallback) ==========
+    document.getElementById('contactSend')?.addEventListener('click', async () => {
+      const name = document.getElementById('contactName').value;
+      const email = document.getElementById('contactEmail').value;
+      const message = document.getElementById('contactMessage').value;
+      const status = document.getElementById('contactStatus');
+      status.textContent = 'Sending...';
+      try {
+        // Example using Formspree (replace with your endpoint) — this sends email without backend
+        const res = await fetch('https://formspree.io/f/mrbakllz', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, email, message })
+        });
+        if (res.ok) {
+          status.textContent = 'Message sent — thank you!';
+        } else {
+          status.textContent = 'Failed to send. Try again later.';
+        }
+      } catch (e) {
+        console.error(e);
+        status.textContent = 'Failed to send. Check console.';
+      }
+    });
+
+    // ========== Simple local AI fallback and quiz logic ==========
+    const sampleAnswers = {
+      'what is photosynthesis': 'Photosynthesis is the process plants use to convert sunlight into chemical energy (glucose) using water and carbon dioxide.',
+      'define osmosis': 'Osmosis is the movement of water across a semipermeable membrane from low solute concentration to high solute concentration.',
+    };
+
+    function escapeHtml(s) { return (s+'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+    document.getElementById('askBtn')?.addEventListener('click', async () => {
+      const q = (document.getElementById('aiQuestion').value || '').trim().toLowerCase();
+      const answerEl = document.getElementById('aiAnswer');
+      if (!q) { answerEl.textContent = 'Please type a question.'; return; }
+      answerEl.textContent = 'Thinking...';
+      // Local fallback
+      for (const key in sampleAnswers) {
+        if (q.includes(key)) { answerEl.textContent = sampleAnswers[key]; return; }
+      }
+      // If OpenAI key provided (not recommended on frontend), attempt a fetch to their API — otherwise show fallback help
+      if (openAIKey) {
+        try {
+          const r = await fetch('https://api.openai.com/v1/chat/completions', {
+            method: 'POST', headers: { 'Content-Type':'application/json', 'Authorization':'Bearer ' + openAIKey },
+            body: JSON.stringify({ model:'gpt-4o-mini', messages:[{role:'user', content:q}] , max_tokens:300 })
+          });
+          const data = await r.json();
+          answerEl.textContent = data?.choices?.[0]?.message?.content || 'No response.';
+        } catch (e) { console.error(e); answerEl.textContent = 'AI request failed on frontend. Use server proxy.'; }
+      } else {
+        answerEl.textContent = 'No AI key provided. Try a simpler question or enable OpenAI (server-side recommended).';
+      }
+    });
+
+    document.getElementById('hintBtn')?.addEventListener('click', () => {
+      document.getElementById('aiQuestion').value = 'What is photosynthesis?';
+    });
+
+    // Simple sample quizzes
+    const quizArea = document.getElementById('quizArea');
+    const quizzes = [
+      { q: '2 + 3 = ?', a: '5' }, { q: 'Capital of Nigeria?', a: 'Abuja' }, { q: 'H2O is?', a: 'Water' }
+    ];
+    quizzes.forEach((item, idx) => {
+      const div = document.createElement('div');
+      div.className = 'mb-2 p-3 border rounded';
+      div.innerHTML = `<div class="font-semibold">${escapeHtml(item.q)}</div><input id="ans${idx}" class="mt-2 p-2 border rounded w-full" placeholder="Answer" /><button data-idx="${idx}" class="mt-2 checkBtn bg-blue-600 text-white px-3 py-1 rounded">Check</button><div class="result mt-2" id="res${idx}"></div>`;
+      quizArea.appendChild(div);
+    });
+    document.addEventListener('click', (e) => {
+      if (e.target && e.target.classList.contains('checkBtn')) {
+        const idx = e.target.dataset.idx; const input = document.getElementById('ans'+idx).value.trim(); const res = document.getElementById('res'+idx);
+        res.textContent = (input.toLowerCase() === quizzes[idx].a.toLowerCase()) ? 'Correct!' : 'Try again.';
+      }
+    });
+
+    // ========== Load community uploads on start ==========
+    if (db) loadCommunityUploads();
+
+    // ========== Register service worker for PWA ==========
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/service-worker.js').then(() => console.log('SW registered')).catch(e => console.warn('SW failed', e));
+    }
+
+  </script>
 
 </body>
 </html>
+
+
+-----------------------------------------------------------------------------
+File: service-worker.js
+-----------------------------------------------------------------------------
+
+/* Simple service worker to cache core assets for offline use. Place this file at the project root. */
+
+const CACHE_NAME = 'jamaare-hub-cache-v1';
+const URLS_TO_CACHE = [
+  '/',
+  '/index.html',
+  '/manifest.json'
+];
+
+self.addEventListener('install', (event) => {
+  self.skipWaiting();
+  event.waitUntil(
+    caches.open(CACHE_NAME).then(cache => cache.addAll(URLS_TO_CACHE))
+  );
+});
+
+self.addEventListener('activate', (event) => {
+  event.waitUntil(self.clients.claim());
+});
+
+self.addEventListener('fetch', (event) => {
+  event.respondWith(
+    caches.match(event.request).then(response => {
+      return response || fetch(event.request).catch(() => caches.match('/index.html'));
+    })
+  );
+});
+
+
+-----------------------------------------------------------------------------
+File: manifest.json
+-----------------------------------------------------------------------------
+
+{
+  "name": "Jama'are Community Hub",
+  "short_name": "Jama'are Hub",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#d4af37",
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
+
+
+-----------------------------------------------------------------------------
+File: firebase-config.js (optional)
+-----------------------------------------------------------------------------
+
+// Create this file and add it to your project root if you want Firebase features.
+// Replace the object below with your Firebase project's config and ensure this script is loaded before index.html
+
+window.FIREBASE_CONFIG = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_PROJECT.firebaseapp.com",
+  projectId: "YOUR_PROJECT_ID",
+  storageBucket: "YOUR_PROJECT.appspot.com",
+  messagingSenderId: "SENDER_ID",
+  appId: "APP_ID"
+};
+
+
+-----------------------------------------------------------------------------
+END OF BUNDLE
+-----------------------------------------------------------------------------
+
+Copy each section into separate files and push them to your GitHub repository. If you want, I can:
+- generate README.md content next,
+- produce optimized icons (badge images) and show how to host on Netlify,
+- or directly modify the code to match your exact original content/style further.
+
+-->
