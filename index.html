@@ -251,4 +251,15 @@
       sponsorGrid.appendChild(div);
     });
   }
-  renderSponsors
+  renderSponsors();
+
+  // Admin chart
+  const ctx = document.getElementById('visitsChart').getContext('2d');
+  new Chart(ctx, {
+    type: 'line',
+    data: { labels:['Jan','Feb','Mar','Apr','May'], datasets:[{label:'Visits', data:[2000,2500,3000,4000,4500], borderColor:'#10b981', backgroundColor:'rgba(16,185,129,0.2)', tension:0.4}] },
+    options:{responsive:true, plugins:{legend:{display:false}}}
+  });
+</script>
+</body>
+</html>
